@@ -51,12 +51,12 @@
 					<form id="form" action="LoginController" method="post">
 					<div class="sign-in-htm">
 						<div class="group">
-							<label for="user" class="label">用户名</label>
-							<input id="user_name" name="user_name" placeholder="手机号" type="text" class="input">
+							<label for="user" class="label">账号</label>
+							<input id="User_Iphone" name="User_Iphone" placeholder="手机号" type="text" class="input">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">密码</label>
-							<input id="user_pass" type="password" class="input" name="user_pass">
+							<input id="User_Password" type="password" class="input" name="User_Password">
 						</div>
 						<div class="group">
 							<div class="container">
@@ -83,19 +83,19 @@
 					<div class="sign-up-htm">
 						<div class="group">
 							<label for="user" class="label">用户名</label>
-							<input id="user_name" name="user_name" type="text" class="input">
+							<input id="User_Name" name="User_Name" type="text" class="input">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">密码</label>
-							<input id="user_pass1" name="user_pass"type="password" class="input" class="onlyNumAlpha" >
+							<input id="User_Password" name="User_Password"type="password" class="input" class="onlyNumAlpha" >
 						</div>
 						<div class="group">
 							<label for="pass" class="label">重复密码</label>
-							<input id="user_pass2" name="user_pass" type="password" class="input"  onblur="check()"class="onlyNumAlpha" >
+							<input id="User_Password1" name="User_Password1" type="password" class="input"  onblur="check()"class="onlyNumAlpha" >
 						</div>
 						<div class="group">
 							<label for="pass" class="label">手机号</label>
-							<input id="user_phone" name="user_phone" type="text" class="input">
+							<input id="User_Iphone" name="User_Iphone" type="text" class="input">
 						</div>
 						<div class="group">
 							<a href="index.html"><input type="submit" class="button" value="注册"></a>

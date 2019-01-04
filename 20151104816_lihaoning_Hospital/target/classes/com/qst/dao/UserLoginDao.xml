@@ -14,9 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		User_Password as User_Password,
 		User_Sex as User_Sex,
 		User_Bir as User_Bir
-		from User
+		from userlogin
 		where  1=1 
-		<if test=" User_Iphone!=null and User_Iphone!='' ">
+		<if test=" User_Iphone!=null and User_Iphone!=' '">
 			and User_Iphone  = #{User_Iphone}
 			</if>
 		</select>

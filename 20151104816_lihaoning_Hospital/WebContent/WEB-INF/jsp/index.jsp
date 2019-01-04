@@ -47,13 +47,14 @@
 	<div class="nav_bg">
 		<div class="wrap">
 			<ul class="nav">
-				<li class="active"><a href="index">主页</a></li>
-				<li><a href="About">相关信息</a></li>
-				<li><a href="staff">医务人员</a></li>
-				<li><a href="project">项目</a></li>
-				<li><a href="contact">联系我们</a></li>
+				<li class="active"><a href="index?userName=${userName}">主页</a></li>
+				<li><a href="About?userName=${userName}">相关信息</a></li>
+				<li><a href="staff?userName=${userName}">医务人员</a></li>
+				<li><a href="project?userName=${userName}">项目</a></li>
+				<li><a href="contact?userName=${userName}">联系我们</a></li>
 				<li><a href="LoginAndRegister">登陆 | 注册</a></li>
-				
+				<li>欢迎${userName}登陆</li>
+				<li><a href="Questionnaire">asdasdasd</a></li>
 				</ul>
 		</div>
 	</div>
