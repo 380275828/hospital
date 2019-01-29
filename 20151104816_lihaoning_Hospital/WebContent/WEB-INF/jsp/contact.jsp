@@ -18,7 +18,7 @@
 	</div>
 </div>
 </div>
-<div class="nav_bg">
+<div class="nav_bg">1
 	<div class="wrap">
 		<ul class="nav">
 			<li class="active"><a href="index?userName=${userName}">主页</a></li>
