@@ -8,6 +8,5 @@ import com.qst.bean.User;
 public interface RegisterUserDao {
 	
 	public int RegisterByBean(User userInfo);
-	
-	public int updateByBean(User userInfo);
+
 }

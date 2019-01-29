@@ -14,9 +14,9 @@ public class UserLoginService {
 	@Autowired
 	private UserLoginDao userLoginDao;
 	
-	public List<User> Login(User userInfo){
-		
-		return userLoginDao.getUserLoginByBean(userInfo);
+	public User Login(User userInfo){
+		List<User> userLoginByBean = userLoginDao.getUserLoginByBean(userInfo);
+		return userLoginByBean.get(0) == null?null:userLoginByBean.get(0);
 	}
 
 }

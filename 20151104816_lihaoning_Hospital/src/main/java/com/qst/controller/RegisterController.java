@@ -26,8 +26,9 @@ public class RegisterController {
 	public String Register(User userInfo,HttpServletResponse response) throws IOException {
 		response.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
-		if (registerService.Register(userInfo) == 1)
+		if (registerService.Register(userInfo) == 1){
 			return "index";
+		}
 		else{
 			out.flush();
 			out.println("<script>");

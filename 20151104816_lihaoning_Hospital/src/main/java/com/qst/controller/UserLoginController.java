@@ -16,7 +16,7 @@ import com.qst.bean.User;
 import com.qst.service.UserLoginService;
 
 /*
- * ÓÃ»§µÇÂ¼ 
+ * ï¿½Ã»ï¿½ï¿½ï¿½Â¼ 
  */
 
 @Controller
@@ -26,35 +26,31 @@ public class UserLoginController {
 	private UserLoginService userLoginService;
 	
 	@RequestMapping(value="/LoginController",method=RequestMethod.POST)
-	public String UserLogin(User userInfo,Model model,HttpServletResponse response) throws IOException{
+	public String UserLogin(User userInfo,Model model,HttpServletResponse response) throws IOException {
 		response.setCharacterEncoding("utf-8");
-		String msg=null;
+		String msg = null;
 		PrintWriter out = response.getWriter();
-		System.out.println(userInfo.getUser_Iphone());
-		List<User> userInfoList = userLoginService.Login(userInfo);
-		if(userInfoList.size()==0){
+		User user = userLoginService.Login(userInfo);
+		if (userInfo == null) {
 			out.flush();
 			out.println("<script>");
-			out.println("alert('ÕËºÅ²»´æÔÚ');");
+			out.println("alert('ï¿½ËºÅ²ï¿½ï¿½ï¿½ï¿½ï¿½');");
 			out.println("history.back();");
 			out.println("</script>");
 			return "LoginAndRegister";
-		}else {
-			for (User user : userInfoList) {
-				if (user.getUser_Password().equals(userInfo.getUser_Password())) {
-					model.addAttribute("userName", user.getUser_Name());
-					return "index";
-				} else {
-					out.flush();
-					out.println("<script>");
-					out.println("alert('ÃÜÂë´íÎó');");
-					out.println("history.back();");
-					out.println("</script>");
-					return "LoginAndRegister";
-				}
+		} else {
+			if (user.getPassword().equals(userInfo.getPassword())) {
+				model.addAttribute("userName", user.getUserName());
+				return "index";
+			} else {
+				out.flush();
+				out.println("<script>");
+				out.println("alert('ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½');");
+				out.println("history.back();");
+				out.println("</script>");
+				return "LoginAndRegister";
 			}
 		}
-		return msg;
 	}
 	
 }
