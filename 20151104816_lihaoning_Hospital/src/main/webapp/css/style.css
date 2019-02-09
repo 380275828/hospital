@@ -515,7 +515,6 @@ body {
 	line-height: 1.8em;
 }
 .dc-profile p:before {
-	content: url('../images/quotes_alt.png');
 	padding-right: 10px;
 }
 .dc-profile {

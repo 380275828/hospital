@@ -13,8 +13,8 @@ public class QuestionnaireService {
 	@Autowired
 	private QuestionDao questionDao;
 	
-	public List<Question> select(Question question){
-		return questionDao.getQuestionByBean(question);
+	public List<Question> select(){
+		return questionDao.getQuestionByBean();
 	}
 
 }

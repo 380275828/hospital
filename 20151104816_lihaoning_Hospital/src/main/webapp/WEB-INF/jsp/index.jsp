@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -53,8 +54,9 @@
 				<li><a href="project?userName=${userName}">项目</a></li>
 				<li><a href="contact?userName=${userName}">联系我们</a></li>
 				<li><a href="LoginAndRegister">登陆 | 注册</a></li>
-				<li>欢迎${userName}登陆</li>
-				<li><a href="Questionnaire">asdasdasd</a></li>
+				<c:if test="${not empty userName}">
+					<li>欢迎${userName}登陆</li>
+				</c:if>
 				</ul>
 		</div>
 	</div>

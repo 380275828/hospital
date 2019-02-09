@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -21,13 +22,15 @@
 <div class="nav_bg">
 	<div class="wrap">
 		<ul class="nav">
-			<li class="active"><a href="index?userName=${userName}">主页</a></li>
-				<li><a href="About?userName=${userName}">相关信息</a></li>
-				<li><a href="staff?userName=${userName}">医务人员</a></li>
-				<li><a href="project?userName=${userName}">项目</a></li>
-				<li><a href="contact?userName=${userName}">联系我们</a></li>
-				<li><a href="LoginAndRegister">登陆 | 注册</a></li>
+			<li><a href="index?userName=${userName}">主页</a></li>
+			<li><a href="About?userName=${userName}">相关信息</a></li>
+			<li><a href="staff?userName=${userName}">医务人员</a></li>
+			<li><a href="project?userName=${userName}">问卷调查</a></li>
+			<li class="active"><a href="contact?userName=${userName}">查看结果</a></li>
+			<li><a href="LoginAndRegister">登陆 | 注册</a></li>
+			<c:if test="${not empty userName}">
 				<li>欢迎${userName}登陆</li>
+			</c:if>
 		</ul>
 	</div>
 </div>

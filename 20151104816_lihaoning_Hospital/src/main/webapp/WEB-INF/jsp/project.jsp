@@ -1,159 +1,169 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<title>Insert title here</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Insert title here</title>
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+        request.setAttribute("basePath",basePath);
+    %>
 </head>
 <body>
 <div class="h_bg">
-<div class="wrap">
-<div class="header">
-		<div class="logo">
-			<h1><a href="index.html"><img src="images/logo.png" alt=""></a></h1>
-		</div>
-	</div>
-</div>
-</div>
-<div class="nav_bg">
-<div class="wrap">
-		<ul class="nav">
-			<li class="active"><a href="index?userName=${userName}">主页</a></li>
-				<li><a href="About?userName=${userName}">相关信息</a></li>
-				<li><a href="staff?userName=${userName}">医务人员</a></li>
-				<li><a href="project?userName=${userName}">项目</a></li>
-				<li><a href="contact?userName=${userName}">联系我们</a></li>
-				<li><a href="LoginAndRegister">登陆 | 注册</a></li>
-				<li>欢迎${userName}登陆</li>
-		</ul>
-</div>
-</div>
-<div class="s_bg">
-<div class="wrap">
-<div class="cont_main">
-<div class="boxes">
-		<h2>Providing Unique And Tailored Projects for various proclinic</h2>
-		   
-				<ul class="lb-album">
-					<li>
-						<a href="#image-1">
-							<img src="images/slider1.jpg" alt="">
-							<span> </span>
-						</a>
-						<div class="lb-overlay" id="image-1">
-							<img src="images/slider1.jpg" alt="">
-							<a href="#page" class="lb-close"> </a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-					</li>
-					<li>
-						<a href="#image-2">
-							<img src="images/slider2.jpg" alt="">
-							<span> </span>
-						</a>
-						<div class="lb-overlay" id="image-2">
-								<img src="images/slider2.jpg" alt=""> 
-							<a href="#page" class="lb-close"> </a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-					</li>
-					<li>
-						<a href="#image-3">
-							<img src="images/slider3.jpg" alt="">
-							<span> </span>
-						</a>
-						<div class="lb-overlay" id="image-3">
-							<img src="images/slider3.jpg" alt="image03">
-							<a href="#page" class="lb-close"> </a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-					</li>
-					<li>
-						<a href="#image-4">
-							<img src="images/slider4.jpg" alt="">
-							<span> </span>
-						</a>
-						<div class="lb-overlay" id="image-4">
-							<img src="images/slider4.jpg" alt="image04">
-							<a href="#page" class="lb-close"> </a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-					</li>
-				</ul>
-				<ul class="lb-album">
-					<li>
-						<a href="#image-5">
-							<img src="images/slider5.jpg" alt="">
-							<span> </span>
-						</a>
-						<div class="lb-overlay" id="image-5">
-							<img src="images/slider5.jpg" alt="image05">
-							<a href="#page" class="lb-close"> </a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-					</li>
-					<li>
-						<a href="#image-6">
-							<img src="images/slider6.jpg" alt="">
-							<span> </span>
-						</a>
-						<div class="lb-overlay" id="image-6">
-							<img src="images/slider6.jpg" alt="image06">
-							<a href="#page" class="lb-close"> </a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-					</li>
-					<li>
-						<a href="#image-7">
-							<img src="images/slider7.jpg" alt="">
-							<span> </span>
-						</a>
-						<div class="lb-overlay" id="image-7">
-							<img src="images/slider7.jpg" alt="image07"> 
-							<a href="#page" class="lb-close"> </a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-					</li>
-					<li>
-						<a href="#image-8">
-							<img src="images/slider8.jpg" alt="">
-							<span> </span>
-						</a>
-						<div class="lb-overlay" id="image-8">
-							<img src="images/slider8.jpg" alt="image08">
-							<a href="#page" class="lb-close"> </a>
-						</div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-					</li>	
-				</ul>
-			
+    <div class="wrap">
+        <div class="header">
+            <div class="logo">
+                <a href="index.html"><img src="images/logo.png" alt=""></a>
+            </div>
+        </div>
     </div>
 </div>
+<div class="nav_bg">
+    <div class="wrap">
+        <ul class="nav">
+            <li><a href="index?userName=${userName}">主页</a></li>
+            <li><a href="About?userName=${userName}">相关信息</a></li>
+            <li><a href="staff?userName=${userName}">医务人员</a></li>
+            <li class="active"><a href="project?userName=${userName}">问卷调查</a></li>
+            <li><a href="contact?userName=${userName}">查看结果</a></li>
+            <li><a href="LoginAndRegister">登陆 | 注册</a></li>
+            <c:if test="${not empty userName}">
+                <li>欢迎${userName}登陆</li>
+            </c:if>
+        </ul>
+    </div>
 </div>
+<div class="s_bg">
+    <div class="wrap">
+        <div class="cont_main">
+            <div class="boxes">
+                <h2>身体健康检测问卷调查</h2>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-5 mt-md-0 mt-5">
+                            <div class="tm-site-header-right-col">
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <c:forEach items="${result}" var="item" varStatus="qId">
+                                <div class="col-12">
+                                    <h2 class="tm-question-header">问题 ${qId.index+1}</h2>
+                                    <p>${item.qName}</p>
+                                    <div class="tm-q-choice-container">
+                                        <label class="tm-q-choice">
+                                            <div class="mb-3">
+                                                <input class="tm-radio-group-1 with-gap" name="${qId.index}" type="radio"
+                                                       value="${item.qAnswer.get(0)}"/>
+                                                <span>没有</span>
+                                            </div>
+                                        </label>
+                                        <label class="tm-q-choice">
+                                            <div class="mb-3">
+                                                <input class="tm-radio-group-1 with-gap" name="${qId.index}" type="radio"
+                                                       value="${item.qAnswer.get(1)}"/>
+                                                <span>很少</span>
+                                            </div>
+                                        </label>
+                                        <label class="tm-q-choice">
+                                            <div class="mb-3">
+                                                <input class="tm-radio-group-1 with-gap" name="${qId.index}" type="radio"
+                                                       value="${item.qAnswer.get(2)}"/>
+                                                <span>有时</span>
+                                            </div>
+                                        </label>
+                                        <label class="tm-q-choice">
+                                            <div class="mb-3">
+                                                <input class="tm-radio-group-1 with-gap" name="${qId.index}" type="radio"
+                                                       value="${item.qAnswer.get(3)}"/>
+                                                <span>经常</span>
+                                            </div>
+                                        </label>
+                                        <label class="tm-q-choice">
+                                            <div class="mb-3">
+                                                <input class="tm-radio-group-1 with-gap" name="${qId.index}" type="radio"
+                                                       value="${item.qAnswer.get(4)}"/>
+                                                <span>总是</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- col-12 -->
+                                <div class="col-12">
+                                    <hr>
+                                </div>
+                            </c:forEach>
+                            <div class="col-12 text-center tm-submit-container">
+                                <button id="submit" class="btn btn-primary tm-btn-submit">提交问卷</button>
+                            </div>
+                            <div class="col-12">
+                                <hr>
+                            </div>
+                        </div> <!-- row -->
+                    <div class="row">
+                        <div class="col-12">
+                            <footer>
+                                <p class="text-center mb-3 tm-footer-text"></p>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="ftr-bg">
-<div class="wrap">
-<div class="footer">
-	<div class="f_nav">
-		<ul>
-			<li class="active"><a href="index.html">Home</a></li>
-			<li><a href="about.html">About</a></li>
-			<li><a href="staff.html">Staff</a></li>
-			<li><a href="project.html">Projects</a></li>
-			<li><a href="contact.html">Contact</a></li>
-	    </ul>
-	</div>
-		<div class="copy">
-			<p class="w3-link">Copyright &copy; 2014.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-		</div>
-	<div class="clear"></div>
+    <div class="wrap">
+        <div class="footer">
+            <div class="f_nav">
+                <ul>
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="staff.html">Staff</a></li>
+                    <li><a href="project.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="copy">
+                <p class="w3-link">Copyright &copy; 2014.Company name All rights reserved.More Templates <a
+                        href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a
+                        href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
-
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+    $("#submit").click(function(){
+        if($('input[type=radio]:checked').length != ${result.size()}){
+            alert("请检查问题是否全部答完");
+            return ;
+        }
+        var score = 0;
+        $.each($('input:radio'),function(){
+            if(this.checked){
+                score += parseInt($(this).val());
+            }
+        });
+        $.ajax({
+            url:"${basePath}addScore",
+            data:{
+                "score":score
+            },
+            type:"post",
+            success:function(result){
+                alert(result);
+            }});
+    });
+</script>
 </body>
 </html>

@@ -6,5 +6,5 @@ import com.qst.bean.Question;
 
 public interface QuestionDao {
 
-	public List<Question> getQuestionByBean(Question question);
+	public List<Question> getQuestionByBean();
 }

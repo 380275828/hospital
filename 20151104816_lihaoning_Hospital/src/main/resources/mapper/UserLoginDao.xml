@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.dao.UserLoginDao">
+
+    <resultMap id="BaseResultMap" type="com.qst.bean.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="userName" property="userName" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="sex" property="sex" jdbcType="VARCHAR"></result>
+        <result column="age" property="age" jdbcType="INTEGER"></result>
+        <result column="phoneNum" property="phoneNum" jdbcType="VARCHAR"></result>
+        <result column="insider" property="insider" jdbcType="INTEGER"></result>
+    </resultMap>
+
+	<select id="getUserLoginByBean"
+		parameterType="com.qst.bean.User"
+		resultMap="BaseResultMap">
+		select *
+		from h_user
+		where  1=1 
+		<if test=" phoneNum!=null and phoneNum!=' '">
+			and phoneNum  = #{phoneNum}
+		</if>
+		<if test=" password!=null and password!=' '">
+			and password  = #{password}
+		</if>
+		</select>
+
+	
+</mapper>

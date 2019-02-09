@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,7 @@ public class UserLoginController {
 	private UserLoginService userLoginService;
 	
 	@RequestMapping(value="/LoginController",method=RequestMethod.POST)
-	public String UserLogin(User userInfo,Model model,HttpServletResponse response) throws IOException {
+	public String UserLogin(User userInfo, Model model, HttpServletResponse response, HttpServletRequest request) throws IOException {
 		response.setCharacterEncoding("utf-8");
 		String msg = null;
 		PrintWriter out = response.getWriter();
@@ -40,6 +42,8 @@ public class UserLoginController {
 			return "LoginAndRegister";
 		} else {
 			if (user.getPassword().equals(userInfo.getPassword())) {
+				HttpSession session = request.getSession();
+				session.setAttribute("user",user);
 				model.addAttribute("userName", user.getUserName());
 				return "index";
 			} else {
