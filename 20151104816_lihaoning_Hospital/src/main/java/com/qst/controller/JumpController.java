@@ -55,6 +55,9 @@ public class JumpController {
      */
     @RequestMapping("/project")
     public String Project(String userName, Model model) {
+        if(userName == null || "".equals(userName)){
+            return "redirect:LoginAndRegister";
+        }
         List<Question> res = questionnaireService.select();
         List<QuestionPage> pageModel = new ArrayList<>();
         for (Question question : res) {
@@ -74,6 +77,9 @@ public class JumpController {
      */
     @RequestMapping("/contact")
     public String Contact(String userName, Model model) {
+        if(userName == null || "".equals(userName)){
+            return "redirect:LoginAndRegister";
+        }
         model.addAttribute("userName", userName);
         return "contact";
     }
