@@ -18,4 +18,12 @@ public class UserQuestionService {
         int i = userQuestionDao.insertUserQuestion(userQuestion);
         return i;
     }
+
+    public UserQuestion selectUserByUserId(Integer userId){
+        UserQuestion userQuestion = userQuestionDao.selectUserById(userId.toString());
+        if(userQuestion != null){
+            return userQuestion;
+        }
+        return userQuestion;
+    }
 }

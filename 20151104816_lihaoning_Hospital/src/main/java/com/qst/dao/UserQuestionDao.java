@@ -6,4 +6,6 @@ public interface UserQuestionDao {
 
     int insertUserQuestion(UserQuestion userQuestion);
 
+    UserQuestion selectUserById(String userId);
+
 }

@@ -161,10 +161,14 @@
             data:{
                 "score":score
             },
-            type:"post",
+            type:"get",
             success:function(result){
-                alert(result);
-            }});
+                window.location.href="${basePath}contact?userName=${userName}";
+            },
+            error(e){
+                alert(JSON.parse(e));
+            }
+        });
     });
 </script>
 </body>

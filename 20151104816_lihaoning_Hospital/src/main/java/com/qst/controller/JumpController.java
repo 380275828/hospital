@@ -3,13 +3,17 @@ package com.qst.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.qst.bean.Question;
 import com.qst.bean.QuestionPage;
+import com.qst.bean.User;
+import com.qst.bean.UserQuestion;
 import com.qst.dao.QuestionDao;
 import com.qst.service.QuestionnaireService;
+import com.qst.service.UserQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +25,10 @@ import java.util.List;
 public class JumpController {
 
     @Autowired
-    QuestionnaireService questionnaireService;
+    private QuestionnaireService questionnaireService;
+
+    @Autowired
+    private UserQuestionService userQuestionService;
 
     /*
      * 跳转到主页
@@ -54,9 +61,14 @@ public class JumpController {
      * 跳转答卷
      */
     @RequestMapping("/project")
-    public String Project(String userName, Model model) {
-        if(userName == null || "".equals(userName)){
+    public String Project(String userName, Model model, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
             return "redirect:LoginAndRegister";
+        }
+        UserQuestion userQuestion = userQuestionService.selectUserByUserId(user.getId());
+        if (userQuestion != null) {
+            return "forward:/contact";
         }
         List<Question> res = questionnaireService.select();
         List<QuestionPage> pageModel = new ArrayList<>();
@@ -76,11 +88,21 @@ public class JumpController {
      * 跳转到联系我们
      */
     @RequestMapping("/contact")
-    public String Contact(String userName, Model model) {
-        if(userName == null || "".equals(userName)){
+    public String Contact(String userName, Model model, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
             return "redirect:LoginAndRegister";
         }
+        UserQuestion userQuestion = userQuestionService.selectUserByUserId(user.getId());
         model.addAttribute("userName", userName);
+        model.addAttribute("score", userQuestion.getUserScore());
+        String describe = "";
+        if (userQuestion.getUserScore() > 18) {
+            describe = "你的身体达到及格的分数";
+        } else {
+            describe = "你的身体没有达到及格的分数";
+        }
+        model.addAttribute("describe", describe);
         return "contact";
     }
 

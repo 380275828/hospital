@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.qst.bean.Question;
 import com.qst.service.QuestionnaireService;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,12 +37,13 @@ public class QuestionnaireController {
 		//∫ÛÃ®œ‘ æ
 	}
 
-	@RequestMapping(value = "/addScore")
-	public Integer addScore(String score, HttpServletRequest request){
+	@RequestMapping(value = "/addScore", method = RequestMethod.GET)
+	@ResponseBody
+	public String addScore(String score, HttpServletRequest request){
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
-		int res = userQuestionService.insertUserQuestion(Integer.parseInt(score),user.getId());
-		return res;
+		Integer res = userQuestionService.insertUserQuestion(Integer.parseInt(score),user.getId());
+		return res.toString();
 	}
 	
 	

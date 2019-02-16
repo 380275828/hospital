@@ -66,18 +66,10 @@
 		<div class="wrap">
 			<div class="h_btm">
 				<div class="header-para">
-					<h2>Lorem Lipsum dollar sit amet text</h2>
-					<h3>Qsi turpis,pellentesque ultrices</h3>
+					<h2>李浩宁的中医网</h2>
+					<h3>中医分析：儿童缺觉导致肥胖</h3>
 					<p>
-						There are many variations of passages of Lorem Ipsum available,
-						but the majority have suffered alteration in some form, by
-						injected humour, <span>randomised words which don't look
-							even slightly believable. If you are going to use a passage of
-							Lorem Ipsum, you need to be sure there isn't anything
-							embarrassing hidden in the middle of text. All the Lorem Ipsum
-							generators on the Internet tend to repeat predefined chunks as
-							necessary, making this the first true generator on the Internet.
-							It uses a dictionary of over 200 Latin words,</span>
+						缺觉让人精神萎靡。英国一项研究显示，缺觉还导致未成年人肥胖几率增加58%。沃里克大学研究人员整合过去42项实验的结果，涉及75499名年龄不满18岁的未成年人，他们的平均随访时间为3年。研究人员借助问卷或可穿戴设备了解研究对象的睡眠时长，并定期记录研究对象的身高体重指数，结果发现，所有缺觉的研究对象体重增加均高于同龄不缺觉者，他们体重超标或肥胖的几率平均比不缺觉者高58%。</span>
 					</p>
 				</div>
 				<div class="header-banner">
@@ -117,38 +109,19 @@
 				</div>
 				<div class="main">
 					<div class="content">
-						<h2>Welcome</h2>
-						<h4>
-							Lorem Ipsum is simply <span>dummy text of the&nbsp;</span>printing
-							and ,
-						</h4>
-						<p>Nam ornare vulputate risus,id volutpat elit porttitor non.
-							In consequat nisi vel lectus dapibus sodales.Nam ornare vulputate
-							risus, id volutpat elit porttitor non. In consequat nisi vel
-							lectus dapibus sodales.Nam ornare vulputate risus, id volutpat
-							elit porttitor non. In consequat nisi vel lectus dapibus
-							sodales.Nam ornare vulputate risus, id volutpat elit porttitor
-							non. In consequat nisi vel lectus dapibus sodales. Pellentesque
-							habitant morbi tristique senectus Nam ornare vulputate risus, id
-							volutpat elit porttitor non. In consequat nisi vel lectus dapibus
-							sodales.</p>
-						<p class="top">There are many variations of passages of Lorem
-							Ipsum available, but the majority have suffered alteration in
-							some form, by injected humour, or randomised words which don't
-							look even slightly believable. If you are going to use a passage
-							of Lorem Ipsum, you need to be sure there isn't anything
-							embarrassing hidden in the middle of text. All the Lorem Ipsum
-							generators on the Internet tend to repeat predefined chunks as
-							necessary, making this the first true generator on the Internet.
-							It uses a dictionary of over 200 Latin words, combined with a
-							handful of model sentence structures,</p>
+						<h2>欢迎来到中医网</h2>
+						<p>中医（Traditional Chinese Medicine），一般指以中国汉族劳动人民创造的传统医学为主的医学，所以也称汉医。是研究人体生理、病理以及疾病的诊断和防治等的一门学科。
+							中医诞生于原始社会，春秋战国时期中医理论已基本形成，之后历代均有总结发展。除此之外对汉字文化圈国家影响深远，如日本汉方医学，韩国韩医学，朝鲜高丽医学、越南东医学等都是以中医为基础发展起来的。
+							</p>
+						<p class="top">中医承载着中国古代人民同疾病作斗争的经验和理论知识，是在古代朴素的唯物论和自发的辨证法思想指导下，通过长期医疗实践逐步形成并发展成的医学理论体系。
+							中医学以阴阳五行作为理论基础，将人体看成是气、形、神的统一体，通过“望闻问切”四诊合参的方法，探求病因、病性、病位、分析病机及人体内五脏六腑、经络关节、气血津液的变化、判断邪正消长，进而得出病名，归纳出证型，以辨证论治原则，制定“汗、吐、下、和、温、清、补、消”等治法，使用中药、针灸、推拿、按摩、拔罐、气功、食疗等多种治疗手段，使人体达到阴阳调和而康复。</p>
 						<div class="rd_more">
 							<a href="details.html"><button class="btn btn-2 btn-2c">Read
 									More</button></a>
 						</div>
 					</div>
 					<div class="sidebar">
-						<h2>Recent Projects</h2>
+						<h2>更多知识</h2>
 						<div class="blog_posts">
 							<div class="blog_date">
 								<img src="images/blog1.jpg">
@@ -156,53 +129,13 @@
 							<div class="blog_desc">
 								<div class="blog_heading">
 									<p>
-										<span>Lorem ipsum dolor sit amet consec.</span>
+										<span>医学知识1</span>
 									</p>
 									<p class="date">
-										Posted on May 13th, 2013 by <span class="author">Finibus
-											Bonorum</span>
+										时间是2018年9月2号 <span class="author">王医生</span>
 									</p>
 								</div>
-								<p>There are many variations of passages of Lorem Ipsum
-									available, but the majority have,,</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-						<div class="blog_posts">
-							<div class="blog_date">
-								<img src="images/blog2.jpg">
-							</div>
-							<div class="blog_desc">
-								<div class="blog_heading">
-									<p>
-										<span>Lorem ipsum dolor sit amet consec.</span>
-									</p>
-									<p class="date">
-										Posted on May 13th, 2013 by <span class="author">Finibus
-											Bonorum</span>
-									</p>
-								</div>
-								<p>There are many variations of passages of Lorem Ipsum
-									available, but the majority have,,</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-						<div class="blog_posts">
-							<div class="blog_date">
-								<img src="images/blog3.jpg">
-							</div>
-							<div class="blog_desc">
-								<div class="blog_heading">
-									<p>
-										<span>Lorem ipsum dolor sit amet consec.</span>
-									</p>
-									<p class="date">
-										Posted on May 13th, 2013 by <span class="author">Finibus
-											Bonorum</span>
-									</p>
-								</div>
-								<p>There are many variations of passages of Lorem Ipsum
-									available, but the majority have,,</p>
+								<p>中医知识啦啦啦啦</p>
 							</div>
 							<div class="clear"></div>
 						</div>

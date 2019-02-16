@@ -25,7 +25,7 @@
 				<li><a href="index?userName=${userName}">主页</a></li>
 				<li><a href="About?userName=${userName}">相关信息</a></li>
 				<li class="active"><a href="staff?userName=${userName}">医务人员</a></li>
-				<li><a href="project?userName=${userName}">项目</a></li>
+				<li><a href="project?userName=${userName}">问卷调查</a></li>
 				<li><a href="contact?userName=${userName}">查看结果</a></li>
 				<c:if test="${empty userName}">
 					<li><a href="LoginAndRegister">登陆 | 注册</a></li>

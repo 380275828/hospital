@@ -14,5 +14,9 @@
         insert into h_user_question(id,userId,user_socre) values (0,#{userId,jdbcType=INTEGER},#{userScore,jdbcType=INTEGER})
     </insert>
 
+    <select id="selectUserById" resultMap="BaseResultMap">
+        select * from h_user_question where userId = #{userId}
+    </select>
+
 
 </mapper>

@@ -16,7 +16,10 @@ public class UserLoginService {
 	
 	public User Login(User userInfo){
 		List<User> userLoginByBean = userLoginDao.getUserLoginByBean(userInfo);
-		return userLoginByBean.get(0) == null?null:userLoginByBean.get(0);
+		if(userLoginByBean.size() != 0) {
+			return userLoginByBean.get(0);
+		}
+		return null;
 	}
 
 }
