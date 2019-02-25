@@ -16,4 +16,7 @@
 			,#{insider,jdbcType=INTEGER});
 	</insert>
 
+	<update id="updateUser">
+		update h_user set userName = #{userName} , phoneNum = #{phoneNum} , sex = #{sex} , age = #{age} where id = #{id};
+	</update>
 </mapper>

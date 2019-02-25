@@ -1,13 +1,14 @@
 package com.qst.bean;
 
-public class Admin {
+public class Admin extends BaseBean {
 
     private int id;
     private String userName;
     private String password;
     private String sex;
     private String phone;
-    private String describe;
+    private String describes;
+    private int role;
 
     public int getId() {
         return id;
@@ -49,11 +50,19 @@ public class Admin {
         this.phone = phone;
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getDescribes() {
+        return describes;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public void setDescribes(String describe) {
+        this.describes = describe;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 }

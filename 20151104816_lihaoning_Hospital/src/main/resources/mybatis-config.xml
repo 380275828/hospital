@@ -7,4 +7,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<!-- 使用自动扫描包来定义别名，别名为类名 -->
 		<package name="com.qst.bean" />
 	</typeAliases>
+	<plugins>
+		<plugin interceptor="com.qst.intercept.PageIntercepter"></plugin>
+	</plugins>
 </configuration>

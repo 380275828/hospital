@@ -1,8 +1,7 @@
 package com.qst.bean;
 
-import java.sql.Date;
 
-public class User {
+public class User extends BaseBean {
 
 	private int id;
 	private String userName;

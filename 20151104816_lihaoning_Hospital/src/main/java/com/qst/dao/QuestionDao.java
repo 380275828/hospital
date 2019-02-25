@@ -6,6 +6,11 @@ import com.qst.bean.Question;
 
 public interface QuestionDao {
 
-	public List<Question> getQuestionByBean();
+    List<Question> getQuestionByBean();
 
+    List<Question> getAllQuestionByPage(Question page);
+
+    int deleteQuestion(String id);
+
+    int addQuestion(Question question);
 }

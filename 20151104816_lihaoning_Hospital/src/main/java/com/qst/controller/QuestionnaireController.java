@@ -1,7 +1,10 @@
 package com.qst.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.qst.bean.User;
 import com.qst.dao.UserQuestionDao;
 import com.qst.service.UserQuestionService;
@@ -44,6 +47,28 @@ public class QuestionnaireController {
 		User user = (User) session.getAttribute("user");
 		Integer res = userQuestionService.insertUserQuestion(Integer.parseInt(score),user.getId());
 		return res.toString();
+	}
+
+	@RequestMapping("/add_question")
+	public String addQuestion(){
+		return "add_question";
+	}
+
+	@RequestMapping("/add_question_success")
+	@ResponseBody
+	public String addQuestionSuccess(String qName){
+		Question question = new Question();
+		question.setqName(qName);
+		List<Integer> score = new ArrayList<>();
+		for(int i = 1; i <=5 ; i++){
+			score.add(i);
+		}
+		question.setqAnswer(JSONArray.toJSONString(score));
+		int res = questionnaireService.addQuestion(question);
+		if(res != 0){
+			return "true";
+		}
+		return "false";
 	}
 	
 	

@@ -17,4 +17,16 @@ public class QuestionnaireService {
 		return questionDao.getQuestionByBean();
 	}
 
+	public List<Question> getAllQuestionByPage(Question page){
+		return questionDao.getAllQuestionByPage(page);
+	}
+
+	public int deleteQuestion(String id){
+		return questionDao.deleteQuestion(id);
+	}
+
+	public int addQuestion(Question question){
+		return questionDao.addQuestion(question);
+	}
+
 }

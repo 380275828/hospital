@@ -28,5 +28,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 		</select>
 
-	
+	<select id="getAllUserByPage" resultMap="BaseResultMap">
+		select * from h_user
+	</select>
+
+	<delete id="deleteuUser">
+		delete from h_user where id = #{id}
+	</delete>
 </mapper>

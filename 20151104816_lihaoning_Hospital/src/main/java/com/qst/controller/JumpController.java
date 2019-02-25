@@ -1,11 +1,9 @@
 package com.qst.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.qst.bean.Question;
-import com.qst.bean.QuestionPage;
-import com.qst.bean.User;
-import com.qst.bean.UserQuestion;
+import com.qst.bean.*;
 import com.qst.dao.QuestionDao;
+import com.qst.service.AdminService;
 import com.qst.service.QuestionnaireService;
 import com.qst.service.UserQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +28,18 @@ public class JumpController {
     @Autowired
     private UserQuestionService userQuestionService;
 
+    @Autowired
+    private AdminService adminService;
+
     /*
      * 跳转到主页
      */
     @RequestMapping("/index")
-    public String Index(String userName, Model model) {
-        model.addAttribute("userName", userName);
+    public String Index(Model model, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            model.addAttribute("userName", user.getUserName());
+        }
         return "index";
     }
 
@@ -43,8 +47,11 @@ public class JumpController {
      * 跳转到相关信息
      */
     @RequestMapping("/About")
-    public String About(String userName, Model model) {
-        model.addAttribute("userName", userName);
+    public String About(String userName, Model model,HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            model.addAttribute("userName", user.getUserName());
+        }
         return "About";
     }
 
@@ -52,8 +59,13 @@ public class JumpController {
      * 跳转到医务人员
      */
     @RequestMapping("/staff")
-    public String Staff(String userName, Model model) {
-        model.addAttribute("userName", userName);
+    public String Staff(String userName, Model model, HttpServletRequest request) {
+        List<Admin> result = adminService.getAllDoctor();
+        User user = (User) request.getSession().getAttribute("user");
+        if (user != null) {
+            model.addAttribute("userName", user.getUserName());
+        }
+        model.addAttribute("result",result);
         return "staff";
     }
 
@@ -79,7 +91,7 @@ public class JumpController {
             questionPage.setqAnswer(JSONObject.parseArray(question.getqAnswer(), Integer.class));
             pageModel.add(questionPage);
         }
-        model.addAttribute("userName", userName);
+        model.addAttribute("userName", user.getUserName());
         model.addAttribute("result", pageModel);
         return "project";
     }
@@ -94,7 +106,10 @@ public class JumpController {
             return "redirect:LoginAndRegister";
         }
         UserQuestion userQuestion = userQuestionService.selectUserByUserId(user.getId());
-        model.addAttribute("userName", userName);
+        if(userQuestion == null){
+            return "forward:/project";
+        }
+        model.addAttribute("userName", user.getUserName());
         model.addAttribute("score", userQuestion.getUserScore());
         String describe = "";
         if (userQuestion.getUserScore() > 18) {
@@ -106,6 +121,16 @@ public class JumpController {
         return "contact";
     }
 
+    @RequestMapping("/userDetail")
+    public String userDetail(HttpServletRequest request,Model model){
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            return "redirect:LoginAndRegister";
+        }
+        model.addAttribute("user",user);
+        return "userDetail";
+    }
+
     /*
      * 跳转到联系我们
      */
@@ -113,6 +138,11 @@ public class JumpController {
     public String LoginAndRegister(String userName, Model model) {
         model.addAttribute("userName", userName);
         return "LoginAndRegister";
+    }
+
+    @RequestMapping("/chat")
+    public String chat(){
+        return "chat";
     }
 	/*@RequestMapping("/Questionnaire")
 	public String Questionnaire(String userName,Model model){

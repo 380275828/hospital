@@ -18,4 +18,8 @@ public class RegisterService {
 	public int Register(User userInfo) {
 		return registerUserDao.RegisterByBean(userInfo);
 	}
+
+	public int updateUser(User user){
+		return registerUserDao.updateUser(user);
+	}
 }

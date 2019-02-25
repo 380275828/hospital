@@ -22,4 +22,13 @@ public class UserLoginService {
 		return null;
 	}
 
+	public List<User> getAllUser(User page){
+		return userLoginDao.getAllUserByPage(page);
+	}
+
+	public int deleteUser(String id){
+		int res = userLoginDao.deleteuUser(id);
+		return res;
+	}
+
 }

@@ -1,6 +1,6 @@
 package com.qst.bean;
 
-public class UserQuestion {
+public class UserQuestion extends BaseBean {
     private Integer id;
     private Integer userId;
     private Integer userScore;

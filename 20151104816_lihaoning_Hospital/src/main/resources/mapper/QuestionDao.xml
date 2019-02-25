@@ -14,5 +14,15 @@
         select * from h_question
     </select>
 
+    <select id="getAllQuestionByPage" resultMap="BaseResultMap">
+        select * from h_question
+    </select>
 
+    <delete id="deleteQuestion">
+        delete from h_question where id = #{id}
+    </delete>
+    
+    <insert id="addQuestion">
+        insert into h_question (id,q_name,q_answer) values (0,#{qName},#{qAnswer});
+    </insert>
 </mapper>

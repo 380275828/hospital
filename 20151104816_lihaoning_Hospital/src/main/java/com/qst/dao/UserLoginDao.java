@@ -10,5 +10,9 @@ import com.qst.bean.User;
 public interface UserLoginDao {
 
 	public List<User> getUserLoginByBean(User userInfo);
+
+	public List<User> getAllUserByPage(User page);
+
+	int deleteuUser(String id);
 	
 }

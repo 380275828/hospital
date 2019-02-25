@@ -9,4 +9,6 @@ public interface RegisterUserDao {
 	
 	public int RegisterByBean(User userInfo);
 
+	public int updateUser(User user);
+
 }

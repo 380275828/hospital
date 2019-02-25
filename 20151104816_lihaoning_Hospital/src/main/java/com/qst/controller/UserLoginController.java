@@ -33,10 +33,10 @@ public class UserLoginController {
 		String msg = null;
 		PrintWriter out = response.getWriter();
 		User user = userLoginService.Login(userInfo);
-		if (userInfo == null) {
+		if (user == null) {
 			out.flush();
 			out.println("<script>");
-			out.println("alert('�˺Ų�����');");
+			out.println("alert('用户名或密码错误，请重新登陆');");
 			out.println("history.back();");
 			out.println("</script>");
 			return "LoginAndRegister";
