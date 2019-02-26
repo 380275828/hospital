@@ -48,12 +48,12 @@
                                 <input type="text" class="form-control" disabled="disabled" value="${userName}">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label  class="col-sm-2 control-label">分数</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" disabled="disabled" value="${score}">
-                            </div>
-                        </div>
+                        <%--<div class="form-group">--%>
+                            <%--<label  class="col-sm-2 control-label">分数</label>--%>
+                            <%--<div class="col-sm-10">--%>
+                                <%--<input type="text" class="form-control" disabled="disabled" value="${score}">--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                         <div class="form-group">
                             <label  class="col-sm-2 control-label">体制评测</label>
                             <div class="col-sm-10">

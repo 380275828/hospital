@@ -2,8 +2,10 @@ package com.qst.controller;
 
 import com.qst.bean.Admin;
 import com.qst.bean.Question;
+import com.qst.bean.QuestionType;
 import com.qst.bean.User;
 import com.qst.service.AdminService;
+import com.qst.service.QuestionTypeService;
 import com.qst.service.QuestionnaireService;
 import com.qst.service.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class AdminController {
 
     @Autowired
     private QuestionnaireService questionnaireService;
+
+    @Autowired
+    private QuestionTypeService questionTypeService;
 
 
     @RequestMapping("/login")
@@ -96,11 +101,27 @@ public class AdminController {
             }else{
                 page.getPage().setCurrentPage(pageNum);
             }
-
         }
         List<Question> result = questionnaireService.getAllQuestionByPage(page);
+        List<QuestionType> types = questionTypeService.getQuestionType();
         model.addAttribute("result",result);
         model.addAttribute("page",page);
+        model.addAttribute("types",types);
+        return "admin_question";
+    }
+
+    @RequestMapping("/question_search")
+    public String questionSearch(Model model,String qType){
+        Question page = new Question();
+        if(qType != null && !"".equals(qType)){
+            page.setqType(Integer.parseInt(qType));
+        }
+        List<Question> result = questionnaireService.getAllQuestionByPage(page);
+        List<QuestionType> types = questionTypeService.getQuestionType();
+        model.addAttribute("result",result);
+        model.addAttribute("page",page);
+        model.addAttribute("types",types);
+        model.addAttribute("qType",qType);
         return "admin_question";
     }
 

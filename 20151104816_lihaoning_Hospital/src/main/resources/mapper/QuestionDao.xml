@@ -8,6 +8,7 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="q_name" property="qName" jdbcType="VARCHAR"/>
         <result column="q_answer" property="qAnswer" jdbcType="VARCHAR"/>
+        <result column="q_type" property="qType" jdbcType="INTEGER" />
     </resultMap>
 
     <select id="getQuestionByBean" resultMap="BaseResultMap">
@@ -15,7 +16,10 @@
     </select>
 
     <select id="getAllQuestionByPage" resultMap="BaseResultMap">
-        select * from h_question
+        select * from h_question 
+        <if test="qType != null and qType != ''">
+            where q_type = #{qType}
+        </if>
     </select>
 
     <delete id="deleteQuestion">
@@ -23,6 +27,6 @@
     </delete>
     
     <insert id="addQuestion">
-        insert into h_question (id,q_name,q_answer) values (0,#{qName},#{qAnswer});
+        insert into h_question (id,q_name,q_answer,q_type) values (0,#{qName},#{qAnswer},#{qType});
     </insert>
 </mapper>

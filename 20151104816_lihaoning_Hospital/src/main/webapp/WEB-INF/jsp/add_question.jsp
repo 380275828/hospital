@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -29,7 +29,7 @@
     <link rel="stylesheet" type="text/css" href="${basePath}css/zxf_page.css"/>
     <![endif]-->
     <style type="text/css">
-        .nav-style{
+        .nav-style {
             margin-right: 25px;
         }
     </style>
@@ -59,10 +59,18 @@
         </h3>
     </div>
     <div class="panel-body">
-            <div class="form-group">
-                <label for="name">请输入题目</label>
-                <input type="text" class="form-control" id="name">
-            </div>
+        <div class="form-group">
+            <label for="name">请输入题目</label>
+            <input type="text" class="form-control" id="name">
+        </div>
+        <div class="form-group">
+            <label>请选择题目类型</label>
+            <select id="type" class="form-control">
+                <c:forEach items="${result}" var="item">
+                    <option value="${item.id}">${item.type}</option>
+                </c:forEach>
+            </select>
+        </div>
     </div>
     <div class="panel-footer">
         <center>
@@ -70,7 +78,6 @@
         </center>
     </div>
 </div>
-
 
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
@@ -81,15 +88,17 @@
 <script>
     $("#addButton").click(function () {
         var qName = $("#name").val();
+        var type = $("#type").val();
         $.ajax({
-            url:"${basePath}add_question_success",
-            data:{
-                "qName":qName
+            url: "${basePath}add_question_success",
+            data: {
+                "qName": qName,
+                "qType":type
             },
-            success:function(result){
-                window.location.href="${basePath}admin/question";
+            success: function (result) {
+                window.location.href = "${basePath}admin/question";
             },
-            error(e){
+            error(e) {
                 alert(JSON.parse(e));
             }
         });

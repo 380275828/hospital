@@ -7,6 +7,7 @@ public class QuestionPage {
     private int id;
     private String qName;
     private List<Integer> qAnswer;
+    private int qType;
 
     public int getId() {
         return id;
@@ -30,5 +31,13 @@ public class QuestionPage {
 
     public void setqAnswer(List<Integer> qAnswer) {
         this.qAnswer = qAnswer;
+    }
+
+    public int getqType() {
+        return qType;
+    }
+
+    public void setqType(int qType) {
+        this.qType = qType;
     }
 }

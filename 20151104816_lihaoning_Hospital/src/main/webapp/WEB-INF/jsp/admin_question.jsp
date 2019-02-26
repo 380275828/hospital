@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
     String path = request.getContextPath();
     String basePath = request.getScheme() + "://"
@@ -29,7 +29,7 @@
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
-        .nav-style{
+        .nav-style {
             margin-right: 25px;
         }
     </style>
@@ -54,10 +54,20 @@
 
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">
-            题目管理&nbsp;&nbsp;
-            <a href="${basePath}add_question" class="btn btn-success btn-xs">添加</a>
-        </h3>
+        <form class="form-inline" role="form">
+            <h3 class="panel-title">
+                题目管理&nbsp;&nbsp;
+                <a href="${basePath}add_question" class="btn btn-success btn-xs">添加</a>
+                <div class="form-group">
+                    <select class="form-control" id="type">
+                        <c:forEach items="${types}" var="item">
+                            <option value="${item.id}" <c:if test="${qType == item.id}">selected="selected"</c:if>>${item.type}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <a id="search" class="btn btn-success btn-xs">查询</a>
+            </h3>
+        </form>
     </div>
     <div class="panel-body">
         <table class="table table-bordered">
@@ -88,7 +98,9 @@
     </div>
 </div>
 
-
+<form action="/admin/question_search" id="searchFrom">
+    <input id="typeValue" type="hidden" name="qType">
+</form>
 
 <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
@@ -96,20 +108,25 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="${basePath}js/zxf_page.js"></script>
 <script type="text/javascript">
+    $("#search").click(function () {
+        $("#typeValue").val($("#type").val())
+        $("#searchFrom").submit();
+    });
     //翻页
     $(".zxf_pagediv").createPage({
         pageNum: ${page.page.totalPage},
         current: ${page.page.currentPage},
-        backfun: function(e) {
-            if(e.current < 1){
+        backfun: function (e) {
+            if (e.current < 1) {
                 e.current = 1;
             }
-            if(e.current > e.pageNum){
+            if (e.current > e.pageNum) {
                 e.current = e.pageNum;
             }
-            window.location.href="${basePath}admin/question?currentPage="+e.current;
+            window.location.href = "${basePath}admin/question?currentPage=" + e.current;
         }
     });
+
 </script>
 </body>
 </html>

@@ -3,7 +3,7 @@ package com.qst.bean;
 public class UserQuestion extends BaseBean {
     private Integer id;
     private Integer userId;
-    private Integer userScore;
+    private String userScore;
 
     public Integer getId() {
         return id;
@@ -21,11 +21,11 @@ public class UserQuestion extends BaseBean {
         this.userId = userId;
     }
 
-    public Integer getUserScore() {
+    public String getUserScore() {
         return userScore;
     }
 
-    public void setUserScore(Integer userScore) {
+    public void setUserScore(String userScore) {
         this.userScore = userScore;
     }
 }

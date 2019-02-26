@@ -4,6 +4,7 @@ public class Question extends BaseBean {
 	private int id;
 	private String qName;
 	private String qAnswer;
+	private int qType;
 
 	public int getId() {
 		return id;
@@ -27,5 +28,13 @@ public class Question extends BaseBean {
 
 	public void setqAnswer(String qAnswer) {
 		this.qAnswer = qAnswer;
+	}
+
+	public int getqType() {
+		return qType;
+	}
+
+	public void setqType(int qType) {
+		this.qType = qType;
 	}
 }

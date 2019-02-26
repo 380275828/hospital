@@ -11,7 +11,7 @@ public class UserQuestionService {
     @Autowired
     private UserQuestionDao userQuestionDao;
 
-    public int insertUserQuestion(Integer score, Integer userId){
+    public int insertUserQuestion(String score, Integer userId){
         UserQuestion userQuestion = new UserQuestion();
         userQuestion.setUserScore(score);
         userQuestion.setUserId(userId);

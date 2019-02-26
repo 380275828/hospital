@@ -1,9 +1,11 @@
 package com.qst.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.qst.bean.*;
 import com.qst.dao.QuestionDao;
 import com.qst.service.AdminService;
+import com.qst.service.QuestionTypeService;
 import com.qst.service.QuestionnaireService;
 import com.qst.service.UserQuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +14,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import static com.alibaba.fastjson.JSON.parseObject;
 
 /*
  * 跳转到控制台
@@ -30,6 +36,9 @@ public class JumpController {
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private QuestionTypeService questionTypeService;
 
     /*
      * 跳转到主页
@@ -89,6 +98,7 @@ public class JumpController {
             questionPage.setId(question.getId());
             questionPage.setqName(question.getqName());
             questionPage.setqAnswer(JSONObject.parseArray(question.getqAnswer(), Integer.class));
+            questionPage.setqType(question.getqType());
             pageModel.add(questionPage);
         }
         model.addAttribute("userName", user.getUserName());
@@ -109,15 +119,53 @@ public class JumpController {
         if(userQuestion == null){
             return "forward:/project";
         }
+        Map<Integer,Integer> map = (Map)JSONArray.parseObject(userQuestion.getUserScore());
         model.addAttribute("userName", user.getUserName());
         model.addAttribute("score", userQuestion.getUserScore());
-        String describe = "";
-        if (userQuestion.getUserScore() > 18) {
-            describe = "你的身体达到及格的分数";
-        } else {
-            describe = "你的身体没有达到及格的分数";
+        StringBuffer describe = new StringBuffer();
+        boolean ph = false;//平和质
+        boolean pp = false;//偏颇体质
+        int[] p = new int[10];//偏颇体质
+        int[] w = new int[10];//疑似体质
+        int wIndex = 0;
+        int pIndex = 0;
+        if(Integer.parseInt(map.get("1").toString()) > 60){
+            ph = true;
         }
-        model.addAttribute("describe", describe);
+        for(Map.Entry entry : map.entrySet()){
+            if(entry.getKey() == "1"){
+                continue;
+            }
+            if(Double.valueOf(entry.getValue().toString()) > 40){
+                pp = true;
+                p[pIndex++] = Integer.parseInt(entry.getKey().toString());
+            }
+            if(Double.valueOf(entry.getValue().toString()) >= 30 && Double.valueOf(entry.getValue().toString()) <= 39){
+                w[wIndex++] = Integer.parseInt(entry.getKey().toString());
+            }
+        }
+        if(pp){
+            describe.append("确认为偏颇体质，具体情况为");
+            for(int i : p){
+                if(i != 0){
+                    QuestionType questionType = questionTypeService.getType(i);
+                    describe.append(questionType.getType() + " ");
+                }
+            }
+        }
+        if(ph){
+            describe.append("确认为偏颇体质");
+            if(w.length != 0){
+                describe.append(",疑似体质可能为");
+                for(int i : w){
+                    if(i != 0){
+                        QuestionType questionType = questionTypeService.getType(i);
+                        describe.append(questionType.getType() + " ");
+                    }
+                }
+            }
+        }
+        model.addAttribute("describe", describe.toString());
         return "contact";
     }
 

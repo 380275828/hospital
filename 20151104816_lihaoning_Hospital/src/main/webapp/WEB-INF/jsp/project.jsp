@@ -63,35 +63,35 @@
                                     <div class="tm-q-choice-container">
                                         <label class="tm-q-choice">
                                             <div class="mb-3">
-                                                <input class="tm-radio-group-1 with-gap" name="${qId.index}" type="radio"
+                                                <input class="tm-radio-group-1 with-gap ${item.qType}" name="${qId.index}" type="radio"
                                                        value="${item.qAnswer.get(0)}"/>
                                                 <span>没有</span>
                                             </div>
                                         </label>
                                         <label class="tm-q-choice">
                                             <div class="mb-3">
-                                                <input class="tm-radio-group-1 with-gap" name="${qId.index}" type="radio"
+                                                <input class="tm-radio-group-1 with-gap ${item.qType}" name="${qId.index}" type="radio"
                                                        value="${item.qAnswer.get(1)}"/>
                                                 <span>很少</span>
                                             </div>
                                         </label>
                                         <label class="tm-q-choice">
                                             <div class="mb-3">
-                                                <input class="tm-radio-group-1 with-gap" name="${qId.index}" type="radio"
+                                                <input class="tm-radio-group-1 with-gap ${item.qType}" name="${qId.index}" type="radio"
                                                        value="${item.qAnswer.get(2)}"/>
                                                 <span>有时</span>
                                             </div>
                                         </label>
                                         <label class="tm-q-choice">
                                             <div class="mb-3">
-                                                <input class="tm-radio-group-1 with-gap" name="${qId.index}" type="radio"
+                                                <input class="tm-radio-group-1 with-gap ${item.qType}" name="${qId.index}" type="radio"
                                                        value="${item.qAnswer.get(3)}"/>
                                                 <span>经常</span>
                                             </div>
                                         </label>
                                         <label class="tm-q-choice">
                                             <div class="mb-3">
-                                                <input class="tm-radio-group-1 with-gap" name="${qId.index}" type="radio"
+                                                <input class="tm-radio-group-1 with-gap ${item.qType}" name="${qId.index}" type="radio"
                                                        value="${item.qAnswer.get(4)}"/>
                                                 <span>总是</span>
                                             </div>
@@ -150,23 +150,27 @@
             alert("请检查问题是否全部答完");
             return ;
         }
-        var score = 0;
+        var qType = [];
+        var score = [];
         $.each($('input:radio'),function(){
             if(this.checked){
-                score += parseInt($(this).val());
+                var className = $(this).prop("className");
+                qType.push(className.split(' ')[2]);
+                score.push(parseInt($(this).val()));
             }
         });
         $.ajax({
             url:"${basePath}addScore",
             data:{
-                "score":score
+                "score":score,
+                "qType":qType
             },
-            type:"get",
+            type:'POST',
             success:function(result){
-                window.location.href="${basePath}contact?userName=${userName}";
+                window.location.href="${basePath}contact";
             },
             error(e){
-                alert(JSON.parse(e));
+                alert(e.message);
             }
         });
     });

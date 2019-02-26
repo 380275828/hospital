@@ -11,7 +11,7 @@
     </resultMap>
 
     <insert id="insertUserQuestion">
-        insert into h_user_question(id,userId,user_socre) values (0,#{userId,jdbcType=INTEGER},#{userScore,jdbcType=INTEGER})
+        insert into h_user_question(id,userId,user_socre) values (0,#{userId,jdbcType=INTEGER},#{userScore,jdbcType=VARCHAR})
     </insert>
 
     <select id="selectUserById" resultMap="BaseResultMap">
