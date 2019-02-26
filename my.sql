@@ -79,8 +79,9 @@ CREATE TABLE `h_question` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `q_name` varchar(256) DEFAULT NULL COMMENT '问题',
   `q_answer` text COMMENT '答案',
+  `q_type` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,8 +90,32 @@ CREATE TABLE `h_question` (
 
 LOCK TABLES `h_question` WRITE;
 /*!40000 ALTER TABLE `h_question` DISABLE KEYS */;
-INSERT INTO `h_question` VALUES (1,'你经常感到疲惫吗','[1,2,3,4,5]'),(3,'你经常使用电脑吗','[1,2,3,4,5]'),(4,'你经常熬夜吗','[1,2,3,4,5]'),(5,'你经常使用手机吗','[1,2,3,4,5]');
+INSERT INTO `h_question` VALUES (1,'你经常感到疲惫吗','[1,2,3,4,5]',1),(3,'你经常使用电脑吗','[1,2,3,4,5]',1),(4,'你经常熬夜吗','[1,2,3,4,5]',2),(5,'你经常使用手机吗','[1,2,3,4,5]',2);
 /*!40000 ALTER TABLE `h_question` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `h_question_type`
+--
+
+DROP TABLE IF EXISTS `h_question_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `h_question_type` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `h_question_type`
+--
+
+LOCK TABLES `h_question_type` WRITE;
+/*!40000 ALTER TABLE `h_question_type` DISABLE KEYS */;
+INSERT INTO `h_question_type` VALUES (1,'平和质'),(2,'气虚质'),(3,'阳虚质'),(4,'阴虚质'),(5,'痰湿质'),(6,'湿热质'),(7,'血瘀质'),(8,'气郁质'),(9,'特禀质');
+/*!40000 ALTER TABLE `h_question_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -109,7 +134,7 @@ CREATE TABLE `h_user` (
   `phoneNum` varchar(11) DEFAULT NULL,
   `insider` int(1) DEFAULT NULL COMMENT '是否是会员，1为是',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -132,9 +157,9 @@ DROP TABLE IF EXISTS `h_user_question`;
 CREATE TABLE `h_user_question` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `userId` int(11) DEFAULT NULL COMMENT '用户id',
-  `user_socre` int(11) DEFAULT NULL COMMENT '用户得分情况',
+  `user_socre` varchar(100) DEFAULT NULL COMMENT '用户得分情况',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +168,7 @@ CREATE TABLE `h_user_question` (
 
 LOCK TABLES `h_user_question` WRITE;
 /*!40000 ALTER TABLE `h_user_question` DISABLE KEYS */;
-INSERT INTO `h_user_question` VALUES (1,12,4),(17,13,19),(18,16,13);
+INSERT INTO `h_user_question` VALUES (1,12,'4'),(17,13,'19'),(18,16,'13'),(20,21,'{\"1\":50,\"2\":62}');
 /*!40000 ALTER TABLE `h_user_question` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -156,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-25 17:46:36
+-- Dump completed on 2019-02-26 11:29:49
