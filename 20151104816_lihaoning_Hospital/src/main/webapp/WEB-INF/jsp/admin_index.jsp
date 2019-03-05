@@ -47,8 +47,8 @@
         </ul>
     </div>
     <ul class="nav navbar-nav navbar-right nav-style">
-        <li><a href="#">欢迎你${userName}</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-off"></span>&nbsp;注销</a></li>
+        <li><a href="#">欢迎你${user.userName}</a></li>
+        <li><a href="${basePath}/admin/loginOut"><span class="glyphicon glyphicon-off"></span>&nbsp;注销</a></li>
     </ul>
 </nav>
 
@@ -95,7 +95,19 @@
                         </c:if>
                     </td>
                     <td>
-                        <a href="${basePath}admin/delete_user?id=${item.id}"  class="btn btn-danger btn-xs">删除</a>
+                        <a
+                                <c:if test="${user.role == 1}">
+                                    href="javascript:void(0);"
+                                </c:if>
+                                <c:if test="${user.role == 0}">
+                                    href="${basePath}admin/delete_user?id=${item.id}"
+                                </c:if>
+                                class="btn btn-danger btn-xs"
+                                <c:if test="${user.role == 1}">
+                                    disabled="true"
+                                </c:if>>
+                            删除
+                        </a>
                         <a href="#" class="btn btn-info btn-xs">查看</a>
                     </td>
                 </tr>

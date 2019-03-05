@@ -13,6 +13,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Admin admin = (Admin) request.getSession().getAttribute("admin");
         if(admin != null && admin.getUserName() != null && !"".equals(admin.getUserName())){
+            request.setAttribute("user",admin);
             return true;
         }else{
             response.sendRedirect("/admin/login");

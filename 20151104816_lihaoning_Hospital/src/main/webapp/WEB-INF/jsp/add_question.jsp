@@ -47,8 +47,8 @@
         </ul>
     </div>
     <ul class="nav navbar-nav navbar-right nav-style">
-        <li><a href="#">欢迎你${userName}</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-off"></span>&nbsp;注销</a></li>
+        <li><a href="#">欢迎你${user.userName}</a></li>
+        <li><a href="${basePath}/admin/loginOut"><span class="glyphicon glyphicon-off"></span>&nbsp;注销</a></li>
     </ul>
 </nav>
 

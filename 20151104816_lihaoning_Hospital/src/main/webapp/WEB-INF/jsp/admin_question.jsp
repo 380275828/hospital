@@ -47,8 +47,8 @@
         </ul>
     </div>
     <ul class="nav navbar-nav navbar-right nav-style">
-        <li><a href="#">欢迎你${userName}</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-off"></span>&nbsp;注销</a></li>
+        <li><a href="#">欢迎你${user.userName}</a></li>
+        <li><a href="${basePath}/admin/loginOut"><span class="glyphicon glyphicon-off"></span>&nbsp;注销</a></li>
     </ul>
 </nav>
 
@@ -57,7 +57,19 @@
         <form class="form-inline" role="form">
             <h3 class="panel-title">
                 题目管理&nbsp;&nbsp;
-                <a href="${basePath}add_question" class="btn btn-success btn-xs">添加</a>
+                <a
+                        <c:if test="${user.role == 1}">
+                            href="javascript:void(0);"
+                        </c:if>
+                        <c:if test="${user.role == 0}">
+                            href="${basePath}add_question"
+                        </c:if>
+                        class="btn btn-danger btn-xs"
+                        <c:if test="${user.role == 1}">
+                            disabled="true"
+                        </c:if>>
+                    添加
+                </a>
                 <div class="form-group">
                     <select class="form-control" id="type">
                         <c:forEach items="${types}" var="item">
@@ -84,7 +96,19 @@
                     <td>${start.index+1}</td>
                     <td>${item.qName}</td>
                     <td>
-                        <a href="${basePath}admin/delete_question?id=${item.id}" class="btn btn-danger btn-xs">删除</a>
+                        <a
+                                <c:if test="${user.role == 1}">
+                                    href="javascript:void(0);"
+                                </c:if>
+                                <c:if test="${user.role == 0}">
+                                    href="${basePath}admin/delete_question?id=${item.id}"
+                                </c:if>
+                                class="btn btn-danger btn-xs"
+                                <c:if test="${user.role == 1}">
+                                    disabled="true"
+                                </c:if>>
+                            删除
+                        </a>
                     </td>
                 </tr>
             </c:forEach>

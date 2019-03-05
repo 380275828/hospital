@@ -42,6 +42,12 @@ public class AdminController {
         return "adminLogin";
     }
 
+    @RequestMapping("/loginOut")
+    public String loginOut(HttpServletRequest request){
+        request.getSession().removeAttribute("admin");
+        return "adminLogin";
+    }
+
     @RequestMapping("/logined")
     public String logined(Admin admin, Model model, HttpServletRequest request){
         Admin res = adminService.getAdminUser(admin);
@@ -151,6 +157,7 @@ public class AdminController {
     @RequestMapping("/add_doctor_success")
     @ResponseBody
     public String addDoctorSuccess(Admin admin){
+        admin.setRole(1);
         int res = adminService.addDoctor(admin);
         return String.valueOf(res);
     }

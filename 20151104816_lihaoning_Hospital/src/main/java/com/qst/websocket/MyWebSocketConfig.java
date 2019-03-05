@@ -13,7 +13,7 @@ public class MyWebSocketConfig implements WebSocketConfigurer {
     @Autowired
     private MyWebSocketHander myWebSocketHander;
 
-    private static final String LINK_URI = "websocket.do";
+    private static final String LINK_URI = "/websocket";
     //添加websocket处理器，添加握手拦截器  拦截器先执行 然后到处理器
         @Override
         public void registerWebSocketHandlers(WebSocketHandlerRegistry webSocketHandlerRegistry) {

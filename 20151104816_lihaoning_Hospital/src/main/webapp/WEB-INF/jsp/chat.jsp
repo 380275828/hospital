@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+    <script src="https://cdn.bootcss.com/web-socket-js/1.0.0/web_socket.min.js"></script>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet"
           href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -26,8 +26,7 @@
     <script type="text/javascript">
         $(function() {
 
-            var websocket = new WebSocket("ws://${basePath}websocket.do");
-
+            var websocket = new WebSocket("ws://localhost:8080/websocket");
             websocket.onopen = function(evnt) {
                 $("#tou").html("链接服务器成功!")
             };
@@ -35,17 +34,19 @@
                 $("#msg").html($("#msg").html() + "<br/>" + evnt.data);
             };
             websocket.onerror = function(evnt) {
+                console.log(evnt)
                 $("#tou").html("发生错误，与服务器断开了链接!")
             };
-            websocket.onclose = function(evnt) {
-                $("#tou").html("与服务器断开了链接!")
-            }
+            // websocket.onclose = function(evnt) {
+            //     $("#tou").html("与服务器断开了链接!")
+            // }
             $('#send').bind('click', function() {
                 send();
             });
             function send() {
                 if (websocket != null) {
                     var message = document.getElementById('message').value;
+                    alert(message);
                     websocket.send(message);
                 } else {
                     alert('未与服务器链接.');
