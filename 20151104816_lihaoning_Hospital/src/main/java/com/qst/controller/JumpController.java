@@ -73,11 +73,14 @@ public class JumpController {
      */
     @RequestMapping("/staff")
     public String Staff(String userName, Model model, HttpServletRequest request) {
-        List<Admin> result = adminService.getAllDoctor();
         User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            return "redirect:LoginAndRegister";
+        }
         if (user != null) {
             model.addAttribute("userName", user.getUserName());
         }
+        List<Admin> result = adminService.getAllDoctor();
         model.addAttribute("result",result);
         return "staff";
     }

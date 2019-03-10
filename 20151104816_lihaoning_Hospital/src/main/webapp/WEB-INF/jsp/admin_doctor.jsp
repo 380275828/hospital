@@ -58,7 +58,19 @@
     <div class="panel-heading">
         <h3 class="panel-title">
             专家管理&nbsp;&nbsp;
-            <a href="${basePath}admin/add_doctor" class="btn btn-success btn-xs">添加</a>
+            <a
+                    <c:if test="${user.role == 1}">
+                        href="javascript:void(0);"
+                    </c:if>
+                    <c:if test="${user.role == 0}">
+                        href="${basePath}admin/add_doctor"
+                    </c:if>
+                    class="btn btn-danger btn-xs"
+                    <c:if test="${user.role == 1}">
+                        disabled="true"
+                    </c:if>>
+                添加
+            </a>
         </h3>
     </div>
     <div class="panel-body">
