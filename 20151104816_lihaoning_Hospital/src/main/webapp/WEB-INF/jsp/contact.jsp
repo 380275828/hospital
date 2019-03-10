@@ -33,6 +33,7 @@
             </c:if>
             <c:if test="${not empty userName}">
                 <li><a href="${basePath}userDetail">欢迎${userName}登陆</a></li>
+                <li><a href="${basePath}userLogin">注销</a></li>
             </c:if>
         </ul>
     </div>

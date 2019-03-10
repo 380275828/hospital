@@ -2,6 +2,13 @@
          pageEncoding="UTF-8" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh">
+<%
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+            + request.getServerName() + ":" + request.getServerPort()
+            + path + "/";
+    request.setAttribute("basePath", basePath);
+%>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>用户登录注册</title>
@@ -34,13 +41,7 @@
             } else {
                 alert('用户名密码错误')
             }
-            var re = /^1\d{10}$/;
-            if(!re.test($("#r_phone").val())){
-                alert("请输入正确的手机号");
-                return false;
-            }
         }
-
     </script>
 
 </head>
@@ -82,7 +83,7 @@
                         </div>
                     </div>
                 </form>
-                <form action="RegisterController" method="post">
+                <form action="RegisterController" id="registerFrom" method="get">
                     <div class="sign-up-htm">
                         <div class="group">
                             <label class="label">用户名</label>
@@ -95,15 +96,25 @@
                         </div>
                         <div class="group">
                             <label class="label">重复密码</label>
-                            <input id="r_password1" name="" type="password" class="input"
-                                   onblur="check()" class="onlyNumAlpha">
+                            <input id="r_password1" name="" type="password" class="input" class="onlyNumAlpha">
                         </div>
                         <div class="group">
                             <label class="label">手机号</label>
                             <input id="r_phone" name="phoneNum" type="text" class="input">
                         </div>
                         <div class="group">
-                            <a href="index.html"><input type="submit" class="button" value="注册"></a>
+                            <label class="label">年龄</label>
+                            <input id="r_age" name="phoneNum" type="text" class="input">
+                        </div>
+                        <div class="form-group">
+                            <label>请选择性别</label>
+                            <select id="sex" class="form-control">
+                                <option value="1">男</option>
+                                <option value="0">女</option>
+                            </select>
+                        </div>
+                        <div class="group">
+                            <button type="button" class="button" id="submit" value="注册">注册</button>
                         </div>
                         <div class="hr"></div>
                         <div class="foot-lnk">
@@ -115,6 +126,45 @@
         </div>
     </div>
 </div>
-<script src="js/jigsaw.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<script type="text/javascript">
+    function checkPhone(){
+        var re = /^1\d{10}$/;
+        if(!re.test($("#r_phone").val())){
+            alert("请输入正确的手机号");
+            return ;
+        }
+    }
+
+    $("#submit").click(function () {
+        var re = /^1\d{10}$/;
+        if(!re.test($("#r_phone").val())){
+            alert("请输入正确的手机号");
+            return ;
+        }
+        if($("#r_password").val() != $("#r_password1").val()){
+            alert("密码不一致，请重新输入");
+            return;
+        }
+        $.ajax({
+            url:"RegisterController",
+            type:"post",
+            data:{
+                "userName":$("#r_name").val(),
+                "phoneNum":$("#r_phone").val(),
+                "password":$("#r_password").val(),
+                "sex":$("#sex").val(),
+                "age":$("#r_age").val()
+            },
+            success:function(result){
+                window.location.href="${basePath}/index";
+            },
+            error(e){
+                alert(JSON.parse(e));
+            }
+        });
+    });
+</script>
 </body>
 </html>

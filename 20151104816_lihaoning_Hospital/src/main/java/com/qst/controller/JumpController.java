@@ -162,7 +162,7 @@ public class JumpController {
                 if(i != 0){
                     QuestionType questionType = questionTypeService.getType(i);
                     describe.append(questionType.getType() + " ");
-                    suggest.append(properties.get(questionType.getId()+""));
+                    suggest.append(properties.get(questionType.getId()+"") + "\r\n");
                 }
             }
         }

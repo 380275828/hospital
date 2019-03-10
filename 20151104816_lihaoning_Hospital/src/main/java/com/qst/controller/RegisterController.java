@@ -25,19 +25,13 @@ public class RegisterController {
 	private RegisterService registerService;
 
 	@RequestMapping(value = "/RegisterController", method = RequestMethod.POST)
+	@ResponseBody
 	public String Register(User userInfo,HttpServletResponse response) throws IOException {
-		response.setCharacterEncoding("utf-8");
-		PrintWriter out = response.getWriter();
 		if (registerService.Register(userInfo) == 1){
-			return "index";
+			return "true";
 		}
 		else{
-			out.flush();
-			out.println("<script>");
-			out.println("alert('×¢²áÊ§°Ü£¬ÇëÖØÐÂ×¢²á');");
-			out.println("history.back();");
-			out.println("</script>");
-			return "LoginAndRegister";
+			return "false";
 		}
 	}
 

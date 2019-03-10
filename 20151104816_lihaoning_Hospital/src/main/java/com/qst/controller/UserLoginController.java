@@ -56,5 +56,11 @@ public class UserLoginController {
 			}
 		}
 	}
+
+	@RequestMapping("/userLogin")
+	public String userLogin(HttpServletRequest request){
+		request.getSession().removeAttribute("user");
+		return "index";
+	}
 	
 }

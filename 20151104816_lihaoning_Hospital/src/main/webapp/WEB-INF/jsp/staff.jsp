@@ -32,6 +32,7 @@
             </c:if>
             <c:if test="${not empty userName}">
                 <li><a href="${basePath}userDetail">欢迎${userName}登陆</a></li>
+                <li><a href="${basePath}userLogin">注销</a></li>
             </c:if>
         </ul>
     </div>
@@ -61,33 +62,12 @@
                             </div>
                         </div>
                     </div>
-                    <c:if test="${(doc.index + 1) % 3 == 1}">
+                    <c:if test="${(doc.index + 1) % 3 == 0}">
                         <div class="clear"></div>
                         </div>
                     </c:if>
                 </c:forEach>
             </div>
-        </div>
-    </div>
-</div>
-<div class="ftr-bg">
-    <div class="wrap">
-        <div class="footer">
-            <div class="f_nav">
-                <ul>
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="staff.html">Staff</a></li>
-                    <li><a href="project.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="copy">
-                <p class="w3-link">Copyright &copy; 2014.Company name All rights reserved.More Templates <a
-                        href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a
-                        href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-            </div>
-            <div class="clear"></div>
         </div>
     </div>
 </div>

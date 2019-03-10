@@ -36,8 +36,9 @@
             <c:if test="${empty user.userName}">
                 <li><a href="LoginAndRegister">登陆 | 注册</a></li>
             </c:if>
-            <c:if test="${not empty user.userName}">
-                <li><a href="${basePath}userDetail">欢迎${user.userName}登陆</a></li>
+            <c:if test="${not empty userName}">
+                <li><a href="${basePath}userDetail">欢迎${userName}登陆</a></li>
+                <li><a href="${basePath}userLogin">注销</a></li>
             </c:if>
         </ul>
     </div>

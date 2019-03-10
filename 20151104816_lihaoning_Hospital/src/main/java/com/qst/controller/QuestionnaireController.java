@@ -57,7 +57,7 @@ public class QuestionnaireController {
 		User user = (User) session.getAttribute("user");
 		Map<String,Integer> scoreMap = new HashMap<>();
 		List<QuestionType> result = questionTypeService.getQuestionType();
-		int[] qNum = new int[result.size()];
+		int[] qNum = new int[result.size() + 1];
 		for(int i = 0 ; i < qType.length; i ++){
 			String qtype = qType[i];
 			if(scoreMap.containsKey(qtype)){
