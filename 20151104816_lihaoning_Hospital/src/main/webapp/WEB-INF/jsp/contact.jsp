@@ -58,7 +58,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">建议</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" disabled="disabled" value="${suggest}">
+                            <textarea class="form-control" rows="15"  disabled="disabled">${suggest}</textarea>
                         </div>
                     </div>
                 </div>
