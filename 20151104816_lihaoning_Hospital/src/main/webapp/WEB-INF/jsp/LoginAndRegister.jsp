@@ -34,7 +34,11 @@
             } else {
                 alert('用户名密码错误')
             }
-
+            var re = /^1\d{10}$/;
+            if(!re.test($("#r_phone").val())){
+                alert("请输入正确的手机号");
+                return false;
+            }
         }
 
     </script>
@@ -112,6 +116,5 @@
     </div>
 </div>
 <script src="js/jigsaw.js"></script>
-
 </body>
 </html>

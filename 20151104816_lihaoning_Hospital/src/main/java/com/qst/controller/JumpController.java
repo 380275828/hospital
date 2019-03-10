@@ -14,10 +14,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import static com.alibaba.fastjson.JSON.parseObject;
 
@@ -110,7 +114,7 @@ public class JumpController {
      * 跳转到联系我们
      */
     @RequestMapping("/contact")
-    public String Contact(String userName, Model model, HttpServletRequest request) {
+    public String Contact(String userName, Model model, HttpServletRequest request) throws IOException {
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
             return "redirect:LoginAndRegister";
@@ -144,18 +148,28 @@ public class JumpController {
                 w[wIndex++] = Integer.parseInt(entry.getKey().toString());
             }
         }
+        StringBuffer suggest = new StringBuffer();
+        Properties properties = new Properties();
+        // 使用ClassLoader加载properties配置文件生成对应的输入流
+        InputStream in = JumpController.class.getClassLoader().getResourceAsStream("suggest.properties");
+        // 使用properties对象加载输入流
+        properties.load(new InputStreamReader(in, "utf-8"));
+        //获取key对应的value值
+//        properties.getProperty();
         if(pp){
             describe.append("确认为偏颇体质，具体情况为");
             for(int i : p){
                 if(i != 0){
                     QuestionType questionType = questionTypeService.getType(i);
                     describe.append(questionType.getType() + " ");
+                    suggest.append(properties.get(questionType.getId()+""));
                 }
             }
         }
         if(ph){
-            describe.append("确认为偏颇体质");
-            if(w.length != 0){
+            describe.append("确认为平和体质");
+            suggest.append(properties.get("1"));
+            if(wIndex != 0){
                 describe.append(",疑似体质可能为");
                 for(int i : w){
                     if(i != 0){
@@ -166,6 +180,7 @@ public class JumpController {
             }
         }
         model.addAttribute("describe", describe.toString());
+        model.addAttribute("suggest",suggest.toString());
         return "contact";
     }
 

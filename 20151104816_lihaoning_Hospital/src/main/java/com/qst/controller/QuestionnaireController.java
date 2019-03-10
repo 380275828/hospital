@@ -39,6 +39,7 @@ public class QuestionnaireController {
 	@Autowired
 	private QuestionTypeService questionTypeService;
 
+
 	@RequestMapping(value="/Questionnaire")
 	public String Questionnaire(Question question,Model model) {
 		System.out.println("asdasdasd112233");
@@ -55,7 +56,8 @@ public class QuestionnaireController {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		Map<String,Integer> scoreMap = new HashMap<>();
-		int[] qNum = new int[10];
+		List<QuestionType> result = questionTypeService.getQuestionType();
+		int[] qNum = new int[result.size()];
 		for(int i = 0 ; i < qType.length; i ++){
 			String qtype = qType[i];
 			if(scoreMap.containsKey(qtype)){

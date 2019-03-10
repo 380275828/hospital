@@ -103,6 +103,11 @@
         var phone = $("#phone").val();
         var password = $("#passWd").val();
         var describes = $("#descirbe").val();
+        var re = /^1\d{10}$/;
+        if(!re.test(phone)){
+            alert("请输入正确的手机号");
+            return;
+        }
         $.ajax({
             url:"${basePath}admin/add_doctor_success",
             data:{

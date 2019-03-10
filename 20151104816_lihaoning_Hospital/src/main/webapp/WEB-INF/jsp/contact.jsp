@@ -42,24 +42,24 @@
         <div class="cont_main">
             <div class="contact">
                 <div class="section group">
-                        <div class="form-group">
-                            <label  class="col-sm-2 control-label">名字</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" disabled="disabled" value="${userName}">
-                            </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">名字</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" disabled="disabled" value="${userName}">
                         </div>
-                        <%--<div class="form-group">--%>
-                            <%--<label  class="col-sm-2 control-label">分数</label>--%>
-                            <%--<div class="col-sm-10">--%>
-                                <%--<input type="text" class="form-control" disabled="disabled" value="${score}">--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <div class="form-group">
-                            <label  class="col-sm-2 control-label">体制评测</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" disabled="disabled" value="${describe}">
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">体制评测</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" disabled="disabled" value="${describe}">
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">建议</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" disabled="disabled" value="${suggest}">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
