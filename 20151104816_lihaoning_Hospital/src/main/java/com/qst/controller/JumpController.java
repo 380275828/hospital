@@ -97,7 +97,7 @@ public class JumpController {
         }
         UserQuestion userQuestion = userQuestionService.selectUserByUserId(user.getId());
         if (userQuestion != null) {
-            int ress=JOptionPane.showConfirmDialog(null, "您已提交过问卷，是否重新填写", "是否继续", JOptionPane.YES_NO_OPTION);
+            int ress=JOptionPane.showConfirmDialog(null, "您已提交过问卷，是否重新填写？", "是否继续", JOptionPane.YES_NO_OPTION);
             if(ress==JOptionPane.YES_OPTION){
                 //System.out.println("选择是后执行的代码");
                 userQuestionService.deleteUserById(user.getId());

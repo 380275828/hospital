@@ -94,11 +94,6 @@
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-            <div class="copy">
-                <p class="w3-link">Copyright &copy; 2014.Company name All rights reserved.More Templates <a
-                        href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a
-                        href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
-            </div>
             <div class="clear"></div>
         </div>
     </div>

@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,10 +39,22 @@ public class RegisterController {
 	@RequestMapping("/updateUser")
 	@ResponseBody
 	public String updateUser(User user, HttpServletRequest request){
-		int res = registerService.updateUser(user);
+		int ress= JOptionPane.showConfirmDialog(null, "是否确认修改？", "是否继续", JOptionPane.YES_NO_OPTION);
+		if(ress==JOptionPane.YES_OPTION){
+			//System.out.println("选择是后执行的代码");
+			int res = registerService.updateUser(user);
+			if(res != 0){
+				request.getSession().setAttribute("user",user);
+			}
+			return "true";
+		}else{
+			//System.out.println("选择否后执行的代码");    //点击“否”后执行这个代码块
+			return "userDetail";
+		}
+		/*int res = registerService.updateUser(user);
 		if(res != 0){
 			request.getSession().setAttribute("user",user);
 		}
-		return "true";
+		return "true";*/
 	}
 }
