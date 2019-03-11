@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.dao.QuestionDao">
+
+    <resultMap id="BaseResultMap" type="com.qst.bean.Question">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="q_name" property="qName" jdbcType="VARCHAR"/>
+        <result column="q_answer" property="qAnswer" jdbcType="VARCHAR"/>
+        <result column="q_type" property="qType" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="getQuestionByBean" resultMap="BaseResultMap">
+        select * from h_question
+    </select>
+
+    <select id="getAllQuestionByPage" resultMap="BaseResultMap">
+        select * from h_question 
+        <if test="qType != null and qType != ''">
+            where q_type = #{qType}
+        </if>
+    </select>
+
+    <delete id="deleteQuestion">
+        delete from h_question where id = #{id}
+    </delete>
+    
+    <insert id="addQuestion">
+        insert into h_question (id,q_name,q_answer,q_type) values (0,#{qName},#{qAnswer},#{qType});
+    </insert>
+</mapper>

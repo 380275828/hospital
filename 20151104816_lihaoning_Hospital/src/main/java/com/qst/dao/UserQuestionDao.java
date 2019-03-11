@@ -8,4 +8,5 @@ public interface UserQuestionDao {
 
     UserQuestion selectUserById(String userId);
 
+    void deleteUserById(String userId);
 }

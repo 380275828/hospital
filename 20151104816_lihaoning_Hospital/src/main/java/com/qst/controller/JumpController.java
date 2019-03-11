@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.swing.JOptionPane;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.io.InputStream;
@@ -96,7 +97,17 @@ public class JumpController {
         }
         UserQuestion userQuestion = userQuestionService.selectUserByUserId(user.getId());
         if (userQuestion != null) {
-            return "forward:/contact";
+            int ress=JOptionPane.showConfirmDialog(null, "您已提交过问卷，是否重新填写", "是否继续", JOptionPane.YES_NO_OPTION);
+            if(ress==JOptionPane.YES_OPTION){
+                //System.out.println("选择是后执行的代码");
+                userQuestionService.deleteUserById(user.getId());
+                return "forward:/repetition";
+
+            }else{
+                //System.out.println("选择否后执行的代码");    //点击“否”后执行这个代码块
+                return "forward:/contact";
+            }
+            //return "forward:/contact";
         }
         List<Question> res = questionnaireService.select();
         List<QuestionPage> pageModel = new ArrayList<>();
@@ -113,6 +124,13 @@ public class JumpController {
         return "project";
     }
 
+    /*
+     * 重复填写调查问卷
+     */
+    @RequestMapping("/repetition")
+    public String Repetition(){
+        return "forward:/project";
+    }
     /*
      * 跳转到联系我们
      */
