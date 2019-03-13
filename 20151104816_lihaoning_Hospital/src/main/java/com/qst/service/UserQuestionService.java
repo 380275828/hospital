@@ -26,4 +26,8 @@ public class UserQuestionService {
         }
         return userQuestion;
     }
+
+    public void deleteUserById(Integer userId){
+        userQuestionDao.deleteUserById(userId.toString());
+    }
 }
