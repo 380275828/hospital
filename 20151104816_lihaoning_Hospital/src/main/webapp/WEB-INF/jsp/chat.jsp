@@ -26,12 +26,14 @@
     <script type="text/javascript">
         $(function() {
 
-            var websocket = new WebSocket("ws://localhost:8080/websocket");
+            var websocket = new WebSocket("ws://localhost:8888/im/${userId}");
             websocket.onopen = function(evnt) {
-                $("#tou").html("链接服务器成功!")
             };
             websocket.onmessage = function(evnt) {
-                $("#msg").html($("#msg").html() + "<br/>" + evnt.data);
+                var json = eval('(' + evnt.data + ')');
+                $("#form").val(json.to);
+                $("#to").val(json.form);
+                $("#msg").html($("#msg").html() + "<br/><span style='float: left;'>" + json.message+"</span>");
             };
             websocket.onerror = function(evnt) {
                 console.log(evnt)
@@ -42,12 +44,14 @@
             // }
             $('#send').bind('click', function() {
                 send();
+                $("#message").val("");
             });
             function send() {
                 if (websocket != null) {
                     var message = document.getElementById('message').value;
-                    alert(message);
-                    websocket.send(message);
+                    $("#msg").html($("#msg").html() + "<br/><span style='float: right;'>" + message+"</span>");
+                    var json = "{'form':"+$("#form").val()+",'to':"+$("#to").val()+",'message':'"+message+"'}";
+                    websocket.send(json);
                 } else {
                     alert('未与服务器链接.');
                 }
@@ -71,6 +75,8 @@
 </div>
 <!-- /.col-lg-6 -->
 </div>
+<input type="hidden" id="form" value="${userId}">
+<input type="hidden" id="to" value="${doctorId}">
 <!-- /.row -->
 </body>
 </html>

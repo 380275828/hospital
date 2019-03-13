@@ -79,6 +79,7 @@ public class JumpController {
         }
         if (user != null) {
             model.addAttribute("userName", user.getUserName());
+            model.addAttribute("userId",user.getId());
         }
         List<Admin> result = adminService.getAllDoctor();
         model.addAttribute("result",result);
@@ -207,7 +208,9 @@ public class JumpController {
     }
 
     @RequestMapping("/chat")
-    public String chat(){
+    public String chat(String userId, String doctorId, Model model){
+        model.addAttribute("userId",userId);
+        model.addAttribute("doctorId",doctorId);
         return "chat";
     }
 	/*@RequestMapping("/Questionnaire")
