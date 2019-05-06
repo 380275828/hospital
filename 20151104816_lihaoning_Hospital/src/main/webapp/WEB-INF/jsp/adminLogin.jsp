@@ -9,7 +9,7 @@
 <html lang="zh">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>用户登录注册</title>
+    <title>管理员登录</title>
     <link rel="stylesheet" type="text/css" href="${basePath}css/styles.css">
     <link rel="stylesheet" href="${basePath}css/jigsaw.css">
     <style>
@@ -49,7 +49,7 @@
 <div class="jq22-container" style="padding-top:100px">
     <div class="login-wrap">
         <div class="login-html">
-            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">管理员登陆</label>
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab" ><span style="color:rgba(0,0,0,0.6)">管理员登陆</span></label>
             <input id="tab-2" tye="radio" name="tab" class="sign-up"><label for="tab-2" class="tab"></label>
             <div class="login-form">
                 <form id="form" action="${basePath}admin/logined" method="post">
@@ -72,11 +72,6 @@
                             <input type="button" class="button" value="登陆" onClick="sub() ">
                         </div>
                         <div class="hr"></div>
-                        <div class="foot-lnk">
-                            <a href="index">首页</a><br/>
-                            <br/>
-                            <a href="#forgot">忘记密码?</a>
-                        </div>
                     </div>
                 </form>
             </div>

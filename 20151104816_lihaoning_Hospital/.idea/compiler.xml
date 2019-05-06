@@ -9,8 +9,5 @@
         <module name="ordering" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ordering" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

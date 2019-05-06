@@ -1,7 +1,6 @@
 package com.qst.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,22 +13,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.qst.bean.User;
 import com.qst.service.RegisterService;
+import com.qst.service.UserLoginService;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /*
- * ÓÃ»§×¢²á
+ * ï¿½Ã»ï¿½×¢ï¿½ï¿½
  */
 @Controller
 public class RegisterController {
 
 	@Autowired
 	private RegisterService registerService;
+	@Autowired
+	private UserLoginService userLoginService;
 
 	@RequestMapping(value = "/RegisterController", method = RequestMethod.POST)
-	@ResponseBody
 	public String Register(User userInfo,HttpServletResponse response) throws IOException {
 		if (registerService.Register(userInfo) == 1){
-			return "true";
+			return "LoginAndRegister";
 		}
 		else{
 			return "false";
@@ -39,22 +40,18 @@ public class RegisterController {
 	@RequestMapping("/updateUser")
 	@ResponseBody
 	public String updateUser(User user, HttpServletRequest request){
-		int ress= JOptionPane.showConfirmDialog(null, "ÊÇ·ñÈ·ÈÏĞŞ¸Ä£¿", "ÊÇ·ñ¼ÌĞø", JOptionPane.YES_NO_OPTION);
-		if(ress==JOptionPane.YES_OPTION){
-			//System.out.println("Ñ¡ÔñÊÇºóÖ´ĞĞµÄ´úÂë");
+		//int ress= JOptionPane.showConfirmDialog(null, "ç¡®è®¤ä¿®æ”¹ä¸ªäººä¿¡æ¯", "æ˜¯å¦ä¿®æ”¹", JOptionPane.YES_NO_OPTION);
+		//if(ress==JOptionPane.YES_OPTION){
+			//System.out.println("Ñ¡ï¿½ï¿½ï¿½Çºï¿½Ö´ï¿½ĞµÄ´ï¿½ï¿½ï¿½");
 			int res = registerService.updateUser(user);
-			if(res != 0){
+			//if(res != 0){
 				request.getSession().setAttribute("user",user);
-			}
-			return "true";
-		}else{
-			//System.out.println("Ñ¡Ôñ·ñºóÖ´ĞĞµÄ´úÂë");    //µã»÷¡°·ñ¡±ºóÖ´ĞĞÕâ¸ö´úÂë¿é
+			//}
+			//return "true";
+		//}else{
+			//System.out.println("Ñ¡ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ĞµÄ´ï¿½ï¿½ï¿½");    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ñ¡±ºï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			return "userDetail";
-		}
-		/*int res = registerService.updateUser(user);
-		if(res != 0){
-			request.getSession().setAttribute("user",user);
-		}
-		return "true";*/
+		//}
 	}
+
 }

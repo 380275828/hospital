@@ -36,4 +36,10 @@ public class AdminService {
     public List<Admin> getAllDoctor(){
         return adminDao.getAllDoctor();
     }
+
+    public int select(String phone){
+        List<Admin> res = adminDao.select(phone);
+        System.out.println(res.size());
+        return res.size();
+    }
 }

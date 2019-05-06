@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>Insert title here</title>
+    <title>问卷调查</title>
     <%
         String path = request.getContextPath();
         String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -47,7 +47,8 @@
     <div class="wrap">
         <div class="cont_main">
             <div class="boxes">
-                <h2>身体健康检测问卷调查</h2>
+                <h2>健康体制检测报告</h2>
+                <h3 style="color: red">注：请根据自身条件认真填写，跳出界面需要重新填写</h3>
 
                 <div class="container">
                     <div class="row">
@@ -66,35 +67,35 @@
                                             <div class="mb-3">
                                                 <input class="tm-radio-group-1 with-gap ${item.qType}" name="${qId.index}" type="radio"
                                                        value="${item.qAnswer.get(0)}"/>
-                                                <span>没有</span>
+                                                <span>没有（根本不）</span>
                                             </div>
                                         </label>
                                         <label class="tm-q-choice">
                                             <div class="mb-3">
                                                 <input class="tm-radio-group-1 with-gap ${item.qType}" name="${qId.index}" type="radio"
                                                        value="${item.qAnswer.get(1)}"/>
-                                                <span>很少</span>
+                                                <span>很少（有一点）</span>
                                             </div>
                                         </label>
                                         <label class="tm-q-choice">
                                             <div class="mb-3">
                                                 <input class="tm-radio-group-1 with-gap ${item.qType}" name="${qId.index}" type="radio"
                                                        value="${item.qAnswer.get(2)}"/>
-                                                <span>有时</span>
+                                                <span>有时（有些）</span>
                                             </div>
                                         </label>
                                         <label class="tm-q-choice">
                                             <div class="mb-3">
                                                 <input class="tm-radio-group-1 with-gap ${item.qType}" name="${qId.index}" type="radio"
                                                        value="${item.qAnswer.get(3)}"/>
-                                                <span>经常</span>
+                                                <span>经常（相当）</span>
                                             </div>
                                         </label>
                                         <label class="tm-q-choice">
                                             <div class="mb-3">
                                                 <input class="tm-radio-group-1 with-gap ${item.qType}" name="${qId.index}" type="radio"
                                                        value="${item.qAnswer.get(4)}"/>
-                                                <span>总是</span>
+                                                <span>总是（非常）</span>
                                             </div>
                                         </label>
                                     </div>
@@ -128,17 +129,12 @@
         <div class="footer">
             <div class="f_nav">
                 <ul>
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="staff.html">Staff</a></li>
-                    <li><a href="project.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li class="active"><a href="index">主页</a></li>
+                    <li><a href="About">相关信息</a></li>
+                    <li><a href="staff">医务人员</a></li>
+                    <li><a href="project">问卷调查</a></li>
+                    <li><a href="contact">查看结果</a></li>
                 </ul>
-            </div>
-            <div class="copy">
-                <p class="w3-link">Copyright &copy; 2014.Company name All rights reserved.More Templates <a
-                        href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a
-                        href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
             </div>
             <div class="clear"></div>
         </div>
@@ -147,7 +143,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script type="text/javascript">
     $("#submit").click(function(){
-        if($('input[type=radio]:checked').length != ${result.size()}){
+        if($('input[type=radio]:checked').length < ${result.size()-1}){
             alert("请检查问题是否全部答完");
             return ;
         }

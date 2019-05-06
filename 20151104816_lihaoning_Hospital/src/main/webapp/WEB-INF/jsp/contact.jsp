@@ -63,6 +63,11 @@
                     </div>
                 </div>
             </div>
+            <form action="DelUser1">
+                <div style="text-align: right">
+                    <button type="submit" class="btn btn-primary tm-btn-submit">重新填写问卷</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -74,19 +79,13 @@
                     <li class="active"><a href="index">主页</a></li>
                     <li><a href="About">相关信息</a></li>
                     <li><a href="staff">医务人员</a></li>
-                    <li><a href="project">项目</a></li>
-                    <li><a href="contact">联系我们</a></li>
+                    <li><a href="project">问卷调查</a></li>
+                    <li><a href="contact">查看结果</a></li>
                 </ul>
-            </div>
-            <div class="copy">
-                <p class="w3-link">Copyright &copy; 2014.Company name All rights reserved.More Templates <a
-                        href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a
-                        href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
             </div>
             <div class="clear"></div>
         </div>
     </div>
 </div>
-
 </body>
 </html>

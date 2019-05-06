@@ -25,7 +25,7 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+<!- - jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
@@ -85,7 +85,7 @@
             <li><a href="${basePath}admin/adminIndex">用户管理</a></li>
             <li><a href="${basePath}admin/doctor">专家管理</a></li>
             <li><a href="${basePath}admin/question">题目管理</a></li>
-            <li><a href="${basePath}/chat?userId=${user.id}">在线聊天</a></li>
+            <li><a href="${basePath}admin/chat1?userId=${user.id}">在线聊天</a></li>
         </ul>
     </div>
     <ul class="nav navbar-nav navbar-right nav-style">
@@ -109,7 +109,6 @@
                 <th>账号</th>
                 <th>性别</th>
                 <th>年龄</th>
-                <th>是否会员</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -128,14 +127,6 @@
                         </c:if>
                     </td>
                     <td>${item.age}</td>
-                    <td>
-                        <c:if test="${item.insider == 0}">
-                            否
-                        </c:if>
-                        <c:if test="${item.insider == 1}">
-                            是
-                        </c:if>
-                    </td>
                     <td>
                         <a
                                 <c:if test="${user.role == 1}">

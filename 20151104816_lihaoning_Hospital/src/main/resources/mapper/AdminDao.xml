@@ -33,4 +33,8 @@
     <insert id="addAdmin">
         insert into h_admin (id,userName,passWord,sex,phone,descirbe,role) values (0,#{userName},#{password},#{sex},#{phone},#{describes},#{role});
     </insert>
+
+    <select id="select" resultMap="BaseResultMap">
+		select * from h_admin where phone = #{phone}
+	</select>
 </mapper>

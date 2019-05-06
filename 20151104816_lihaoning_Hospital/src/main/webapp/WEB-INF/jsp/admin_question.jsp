@@ -44,7 +44,7 @@
             <li><a href="${basePath}admin/adminIndex">用户管理</a></li>
             <li><a href="${basePath}admin/doctor">专家管理</a></li>
             <li><a href="${basePath}admin/question">题目管理</a></li>
-            <li><a href="${basePath}/chat?userId=${user.id}">在线聊天</a></li>
+            <li><a href="${basePath}admin/chat1?userId=${user.id}">在线聊天</a></li>
         </ul>
     </div>
     <ul class="nav navbar-nav navbar-right nav-style">
@@ -123,7 +123,7 @@
     </div>
 </div>
 
-<form action="/admin/question_search" id="searchFrom">
+<form action="/ordering_war_exploded/admin/question_search" id="searchFrom">
     <input id="typeValue" type="hidden" name="qType">
 </form>
 

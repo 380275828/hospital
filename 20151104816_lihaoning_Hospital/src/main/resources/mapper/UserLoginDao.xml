@@ -23,9 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test=" phoneNum!=null and phoneNum!=' '">
 			and phoneNum  = #{phoneNum}
 		</if>
-		<if test=" password!=null and password!=' '">
-			and password  = #{password}
-		</if>
+		<!--<if test=" password!=null and password!=' '">
+		  and password  = #{password}
+		</if>-->
 		</select>
 
 	<select id="getAllUserByPage" resultMap="BaseResultMap">
@@ -35,4 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteuUser">
 		delete from h_user where id = #{id}
 	</delete>
+
+	<select id="select" resultMap="BaseResultMap">
+		select * from h_user where  phoneNum  = #{phone}
+	</select>
+
 </mapper>

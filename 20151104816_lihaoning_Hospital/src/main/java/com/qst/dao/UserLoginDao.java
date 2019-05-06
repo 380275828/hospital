@@ -5,7 +5,7 @@ import java.util.List;
 import com.qst.bean.User;
 
 /*
- * ÓÃ»§µÇÂ¼
+ * ï¿½Ã»ï¿½ï¿½ï¿½Â¼
  */
 public interface UserLoginDao {
 
@@ -13,6 +13,8 @@ public interface UserLoginDao {
 
 	public List<User> getAllUserByPage(User page);
 
-	int deleteuUser(String id);
+	public int deleteuUser(String id);
+
+	public List<User> select(String phone);
 	
 }

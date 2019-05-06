@@ -54,7 +54,7 @@
                     </c:if>
                     <div class="dc-head">
                         <div class="dc-head-img">
-                            <a href="#"><img src="images/dc1.jpg" title="dc-name"></a>
+                            <a href="#"><img src="images/dc1.png" title="dc-name"></a>
                         </div>
                         <div class="dc-head-info">
                             <h3>${item.userName}医生</h3>

@@ -18,6 +18,9 @@ import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
@@ -160,5 +163,34 @@ public class AdminController {
         admin.setRole(1);
         int res = adminService.addDoctor(admin);
         return String.valueOf(res);
+    }
+
+    @RequestMapping("/chat1")
+    public String chat(String userId, String doctorId, Model model,HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+        /*if (user == null) {
+            out.flush();
+            out.println("<script>");
+            out.println("alert('无用户登录');");
+            out.println(" window.location.reload();");
+            out.println("history.back();");
+            out.println("</script>");
+            return "redirect:LoginAndRegister";
+        }*/
+        model.addAttribute("userId",userId);
+        model.addAttribute("doctorId",doctorId);
+        return "chat";
+    }
+
+    @RequestMapping(value="/select" )
+    public void select(HttpServletRequest request,HttpServletResponse response)throws Exception{
+        String phone = request.getParameter("phoneNum");
+        //response.setContentType("application/json");
+        if(adminService.select(phone) != 0){
+
+            response.getWriter().write("1");
+        }else{
+            response.getWriter().write("0");
+        }
     }
 }

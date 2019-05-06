@@ -59,74 +59,37 @@
 
                     用数字代表： 1没有 （根本不） 2很少 （有一点） 3有时 （有些） 4经常 （相当） 5总是 （非常）</p>
             </div>
-            <%--<div class="sidebar">--%>
-            <%--<h2>Recent Projects</h2>--%>
-            <%--<div class="blog_posts">--%>
-            <%--<div class="blog_date">--%>
-            <%--<img src="images/blog1.jpg">--%>
-            <%--</div>--%>
-            <%--<div class="blog_desc">--%>
-            <%--<div class="blog_heading">--%>
-            <%--<p><span>Lorem ipsum dolor sit amet consec.</span></p>--%>
-            <%--<p class="date">Posted on May 13th, 2013 by <span class="author">Finibus Bonorum</span> </p>--%>
-            <%--</div>	--%>
-            <%--<p>There are many variations of passages of Lorem Ipsum available, but the majority have,,</p>--%>
-            <%--</div>--%>
-            <%--<div class="clear"></div>	--%>
-            <%--</div>	--%>
-            <%--<div class="blog_posts">--%>
-            <%--<div class="blog_date">--%>
-            <%--<img src="images/blog2.jpg">--%>
-            <%--</div>--%>
-            <%--<div class="blog_desc">--%>
-            <%--<div class="blog_heading">--%>
-            <%--<p><span>Lorem ipsum dolor sit amet consec.</span></p>--%>
-            <%--<p class="date">Posted on May 13th, 2013 by <span class="author">Finibus Bonorum</span> </p>--%>
-            <%--</div>	--%>
-            <%--<p>There are many variations of passages of Lorem Ipsum available, but the majority have,,</p>--%>
-            <%--</div>--%>
-            <%--<div class="clear"></div>	--%>
-            <%--</div>	--%>
-            <%--<div class="blog_posts">--%>
-            <%--<div class="blog_date">--%>
-            <%--<img src="images/blog3.jpg">--%>
-            <%--</div>--%>
-            <%--<div class="blog_desc">--%>
-            <%--<div class="blog_heading">--%>
-            <%--<p><span>Lorem ipsum dolor sit amet consec.</span></p>--%>
-            <%--<p class="date">Posted on May 13th, 2013 by <span class="author">Finibus Bonorum</span> </p>--%>
-            <%--</div>	--%>
-            <%--<p>There are many variations of passages of Lorem Ipsum available, but the majority have,,</p>--%>
-            <%--</div>--%>
-            <%--<div class="clear"></div>	--%>
-            <%--</div>	--%>
-            <%--<div class="blog_posts">--%>
-            <%--<div class="blog_date">--%>
-            <%--<img src="images/blog4.jpg">--%>
-            <%--</div>--%>
-            <%--<div class="blog_desc">--%>
-            <%--<div class="blog_heading">--%>
-            <%--<p><span>Lorem ipsum dolor sit amet consec.</span></p>--%>
-            <%--<p class="date">Posted on May 13th, 2013 by <span class="author">Finibus Bonorum</span> </p>--%>
-            <%--</div>	--%>
-            <%--<p>There are many variations of passages of Lorem Ipsum available, but the majority have,,</p>--%>
-            <%--</div>--%>
-            <%--<div class="clear"></div>	--%>
-            <%--</div>	--%>
-            <%--<div class="blog_posts">--%>
-            <%--<div class="blog_date">--%>
-            <%--<img src="images/blog5.jpg">--%>
-            <%--</div>--%>
-            <%--<div class="blog_desc">--%>
-            <%--<div class="blog_heading">--%>
-            <%--<p><span>Lorem ipsum dolor sit amet consec.</span></p>--%>
-            <%--<p class="date">Posted on May 13th, 2013 by <span class="author">Finibus Bonorum</span> </p>--%>
-            <%--</div>	--%>
-            <%--<p>There are many variations of passages of Lorem Ipsum available, but the majority have,,</p>--%>
-            <%--</div>--%>
-            <%--<div class="clear"></div>	--%>
-            <%--</div>	--%>
-            <%--</div>--%>
+            <div class="sidebar">
+                <h2>中医小知识</h2>
+                <div class="blog_posts">
+                    <div class="blog_date">
+                        <img src="images/blog1.jpg">
+                    </div>
+                    <div class="blog_desc">
+                        <p>痱子是盛夏常见的皮肤病。中医认为，痱子是由于暑热挟湿，蕴结肌肤，导致毛窍郁寒所致，防治痱子首先是要想办法祛除暑湿之毒。
+                            俗话说，常饮“三豆汤”，消暑祛痱保健康。三种豆子，即绿豆、赤豆、黑豆。将它们煮熬成汤，中医称为“三豆汤”。
+                            方中绿豆性寒，味甘，具有清热解毒、消暑利尿的功效，是夏季防治中暑、热痱、疮痈的理想食物；赤小豆性平，
+                            味甘酸，能清热利水、散血消肿，对疮疡肿疖有较好的清解作用；黑豆性平味甘（生的性平，炒的性热，煮的性寒）
+                            有补脾益肾、祛湿利水、补血活血的功效。三豆合用，有清热解毒、健脾利湿之功，因而消暑祛痱有效果，是夏季防暑降温佳品。
+                            具体制法：用绿豆、赤豆、黑豆各10克，加水600毫升，小火煎熬成300毫升，连豆带汤喝下即可。
+                        </p>
+                    </div>
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <div class="blog_date">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="images/blog1.jpg">
+                    </div>
+                    <div class="blog_desc">
+                        <p>西瓜皮中医称作西瓜翠衣，在清暑涤热、利尿生津方面的作用，远胜于瓜瓤，既是解暑佳品，更是清凉解渴利尿的佳品，对高血压、心脏及肾脏性水肿者，均有保健功效。
+                            临床体会，本方对夏季高血压患者，因天气闷热而致头晕心烦、血压升高者用之即有效果。
+                            西瓜皮可清热除烦，食醋味酸入肝，能敛肝平阳，二味共奏平肝、敛肝之功，故对夏季阳亢高血压有最佳治疗效果。
+                        </p>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
             <div class="clear"></div>
         </div>
     </div>
@@ -136,11 +99,11 @@
         <div class="footer">
             <div class="f_nav">
                 <ul>
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="staff.html">Staff</a></li>
-                    <li><a href="project.html">Projects</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li class="active"><a href="index">主页</a></li>
+                    <li><a href="About">相关信息</a></li>
+                    <li><a href="staff">医务人员</a></li>
+                    <li><a href="project">问卷调查</a></li>
+                    <li><a href="contact">查看结果</a></li>
                 </ul>
             </div>
             <div class="copy">

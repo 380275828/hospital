@@ -27,6 +27,7 @@
         $(function() {
 
             var websocket = new WebSocket("ws://localhost:8888/im/${userId}");
+            /*var websocket = new WebSocket("ws://192.168.43.125:8888/im/${userId}");*/
             websocket.onopen = function(evnt) {
             };
             websocket.onmessage = function(evnt) {
@@ -62,13 +63,14 @@
 </head>
 <body>
 
-<div class="page-header" id="tou">webSocket及时聊天Demo程序</div>
+<div class="page-header" id="tou">聊天Demo程序</div>
 <div class="well" id="msg"></div>
 <div class="col-lg">
     <div class="input-group">
         <input type="text" class="form-control" placeholder="发送信息..."
                id="message"> <span class="input-group-btn">
 				<button class="btn btn-default" type="button" id="send">发送</button>
+                <button class="btn btn-default" type="button" onclick="history.back()">返回</button>
 			</span>
     </div>
     <!-- /input-group -->

@@ -15,4 +15,6 @@ public interface AdminDao {
     int addAdmin(Admin admin);
 
     List<Admin> getAllDoctor();
+
+    List<Admin> select(String phone);
 }

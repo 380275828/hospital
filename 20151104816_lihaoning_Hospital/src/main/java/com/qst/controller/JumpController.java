@@ -4,17 +4,17 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.qst.bean.*;
 import com.qst.dao.QuestionDao;
-import com.qst.service.AdminService;
-import com.qst.service.QuestionTypeService;
-import com.qst.service.QuestionnaireService;
-import com.qst.service.UserQuestionService;
+import com.qst.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.swing.JOptionPane;
 import javax.servlet.http.HttpServletRequest;
+
+import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -23,11 +23,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Iterator;
 
 import static com.alibaba.fastjson.JSON.parseObject;
+import static com.alibaba.fastjson.JSON.setDefaultTypeKey;
 
 /*
- * Ìø×ªµ½¿ØÖÆÌ¨
+ * ??????????
  */
 
 @Controller
@@ -46,7 +48,7 @@ public class JumpController {
     private QuestionTypeService questionTypeService;
 
     /*
-     * Ìø×ªµ½Ö÷Ò³
+     * ????????
      */
     @RequestMapping("/index")
     public String Index(Model model, HttpServletRequest request) {
@@ -58,7 +60,7 @@ public class JumpController {
     }
 
     /*
-     * Ìø×ªµ½Ïà¹ØĞÅÏ¢
+     * ???????????
      */
     @RequestMapping("/About")
     public String About(String userName, Model model,HttpServletRequest request) {
@@ -70,14 +72,14 @@ public class JumpController {
     }
 
     /*
-     * Ìø×ªµ½Ò½ÎñÈËÔ±
+     * ???????????
      */
     @RequestMapping("/staff")
     public String Staff(String userName, Model model, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
-        if (user == null) {
+        /*if (user == null) {
             return "redirect:LoginAndRegister";
-        }
+        }*/
         if (user != null) {
             model.addAttribute("userName", user.getUserName());
             model.addAttribute("userId",user.getId());
@@ -88,27 +90,34 @@ public class JumpController {
     }
 
     /*
-     * Ìø×ª´ğ¾í
+     * ??????
      */
     @RequestMapping("/project")
-    public String Project(String userName, Model model, HttpServletRequest request) {
+    public String Project(String userName, Model model, HttpServletRequest request,HttpServletResponse response)throws IOException {
+        response.setCharacterEncoding("utf-8");
+        PrintWriter out = response.getWriter();
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
             return "redirect:LoginAndRegister";
         }
         UserQuestion userQuestion = userQuestionService.selectUserByUserId(user.getId());
         if (userQuestion != null) {
-            int ress=JOptionPane.showConfirmDialog(null, "ÄúÒÑÌá½»¹ıÎÊ¾í£¬ÊÇ·ñÖØĞÂÌîĞ´£¿", "ÊÇ·ñ¼ÌĞø", JOptionPane.YES_NO_OPTION);
+            //System.out.println(user.getUserName());
+           /* int ress=JOptionPane.showConfirmDialog(null, "æ˜¯å¦é‡æ–°å¡«å†™é—®å·", "é‡æ–°å¡«å†™", JOptionPane.YES_NO_OPTION);
             if(ress==JOptionPane.YES_OPTION){
-                //System.out.println("Ñ¡ÔñÊÇºóÖ´ĞĞµÄ´úÂë");
                 userQuestionService.deleteUserById(user.getId());
                 return "forward:/repetition";
 
             }else{
-                //System.out.println("Ñ¡Ôñ·ñºóÖ´ĞĞµÄ´úÂë");    //µã»÷¡°·ñ¡±ºóÖ´ĞĞÕâ¸ö´úÂë¿é
                 return "forward:/contact";
             }
-            //return "forward:/contact";
+            //return "forward:/contact";*/
+            out.flush();
+            out.println("<script>");
+            out.println("alert('æ‚¨å·²å¡«å†™è¿‡é—®å·ï¼Œè¯·æŸ¥çœ‹ä½“è´¨');");
+            //out.println("history.back();");
+            out.println("</script>");
+            return "forward:/contact";
         }
         List<Question> res = questionnaireService.select();
         List<QuestionPage> pageModel = new ArrayList<>();
@@ -126,33 +135,54 @@ public class JumpController {
     }
 
     /*
-     * ÖØ¸´ÌîĞ´µ÷²éÎÊ¾í
+     * ?????Ğ´???????
      */
     @RequestMapping("/repetition")
     public String Repetition(){
         return "forward:/project";
     }
     /*
-     * Ìø×ªµ½ÁªÏµÎÒÃÇ
+     * ä½“è´¨æµ‹è¯„è½¬
+     * åŒ–åˆ†æ•°=[ï¼ˆåŸå§‹åˆ†-æ¡ç›®æ•°ï¼‰/ï¼ˆæ¡ç›®æ•°Ã—4ï¼‰] Ã—100%ï¼›
      */
     @RequestMapping("/contact")
-    public String Contact(String userName, Model model, HttpServletRequest request) throws IOException {
+    public String Contact(String userName, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setCharacterEncoding("utf-8");
+        PrintWriter out = response.getWriter();
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
             return "redirect:LoginAndRegister";
         }
-        UserQuestion userQuestion = userQuestionService.selectUserByUserId(user.getId());
-        if(userQuestion == null){
+        UserQuestion userQuestion = userQuestionService.selectUserByUserId(user.getId());{
+
+        if(userQuestion == null) {
+            /*int ress=JOptionPane.showConfirmDialog(null, "æ‚¨æœªå¡«å†™é—®å·ï¼Œæ˜¯å¦å¡«å†™ï¼Ÿ", "å¡«å†™é—®å·", JOptionPane.YES_NO_OPTION);
+            if(ress==JOptionPane.YES_OPTION){
+                return "forward:/project";
+
+            }else{
+                out.flush();
+                out.println("<script>");
+                out.println(" window.location.reload();;");
+                out.println("history.back();");
+                out.println("</script>");
+            }*/
+            out.flush();
+            out.println("<script>");
+            out.println("alert('æ‚¨æœªå¡«å†™é—®å·ï¼Œè¯·å¡«å†™é—®å·');");
+            //out.println("history.back();");
+            out.println("</script>");
             return "forward:/project";
+            }
         }
         Map<Integer,Integer> map = (Map)JSONArray.parseObject(userQuestion.getUserScore());
         model.addAttribute("userName", user.getUserName());
         model.addAttribute("score", userQuestion.getUserScore());
         StringBuffer describe = new StringBuffer();
-        boolean ph = false;//Æ½ºÍÖÊ
-        boolean pp = false;//Æ«ÆÄÌåÖÊ
-        int[] p = new int[10];//Æ«ÆÄÌåÖÊ
-        int[] w = new int[10];//ÒÉËÆÌåÖÊ
+        boolean ph = false;//?????
+        boolean pp = false;//???????
+        int[] p = new int[10];//???????
+        int[] w = new int[10];//????????
         int wIndex = 0;
         int pIndex = 0;
         if(Integer.parseInt(map.get("1").toString()) > 60){
@@ -172,14 +202,14 @@ public class JumpController {
         }
         StringBuffer suggest = new StringBuffer();
         Properties properties = new Properties();
-        // Ê¹ÓÃClassLoader¼ÓÔØpropertiesÅäÖÃÎÄ¼şÉú³É¶ÔÓ¦µÄÊäÈëÁ÷
+        // ä½¿ç”¨ClassLoaderåŠ è½½propertiesé…ç½®æ–‡ä»¶ç”Ÿæˆå¯¹åº”çš„è¾“å…¥æµ
         InputStream in = JumpController.class.getClassLoader().getResourceAsStream("suggest.properties");
-        // Ê¹ÓÃproperties¶ÔÏó¼ÓÔØÊäÈëÁ÷
-        properties.load(new InputStreamReader(in, "utf-8"));
-        //»ñÈ¡key¶ÔÓ¦µÄvalueÖµ
+        // ä½¿ç”¨propertieså¯¹è±¡åŠ è½½è¾“å…¥æµ
+        properties.load(new InputStreamReader(in,"utf-8"));
+        //è·å–keyå¯¹åº”çš„valueå€¼
 //        properties.getProperty();
         if(pp){
-            describe.append("È·ÈÏÎªÆ«ÆÄÌåÖÊ£¬¾ßÌåÇé¿öÎª");
+            describe.append("ç¡®è®¤ä¸ºåé¢‡ä½“è´¨ï¼Œå…·ä½“æƒ…å†µä¸º");
             for(int i : p){
                 if(i != 0){
                     QuestionType questionType = questionTypeService.getType(i);
@@ -189,10 +219,10 @@ public class JumpController {
             }
         }
         if(ph){
-            describe.append("È·ÈÏÎªÆ½ºÍÌåÖÊ");
+            describe.append("ç¡®è®¤ä¸ºå¹³å’Œä½“è´¨");
             suggest.append(properties.get("1"));
             if(wIndex != 0){
-                describe.append(",ÒÉËÆÌåÖÊ¿ÉÄÜÎª");
+                describe.append(",ç–‘ä¼¼ä½“è´¨å¯èƒ½ä¸º");
                 for(int i : w){
                     if(i != 0){
                         QuestionType questionType = questionTypeService.getType(i);
@@ -212,12 +242,14 @@ public class JumpController {
         if (user == null) {
             return "redirect:LoginAndRegister";
         }
-        model.addAttribute("user",user);
+       // model.addAttribute("user",user);
+        model.addAttribute("userName", user.getUserName());
+        model.addAttribute("userId",user.getId());
         return "userDetail";
     }
 
     /*
-     * Ìø×ªµ½ÁªÏµÎÒÃÇ
+     * ????????????
      */
     @RequestMapping("/LoginAndRegister")
     public String LoginAndRegister(String userName, Model model) {
@@ -226,14 +258,21 @@ public class JumpController {
     }
 
     @RequestMapping("/chat")
-    public String chat(String userId, String doctorId, Model model){
+    public String chat(String userId, String doctorId, Model model,HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+         if (user == null) {
+            return "redirect:LoginAndRegister";
+        }
         model.addAttribute("userId",userId);
         model.addAttribute("doctorId",doctorId);
         return "chat";
     }
-	/*@RequestMapping("/Questionnaire")
-	public String Questionnaire(String userName,Model model){
-		model.addAttribute("userName",userName);
-		return "Questionnaire";
-	}*/
+
+    @RequestMapping("/DelUser1")
+    public String DelUser1(String userName,HttpServletRequest request){
+        User user = (User) request.getSession().getAttribute("user");
+        UserQuestion userQuestion = userQuestionService.selectUserByUserId(user.getId());
+        userQuestionService.deleteUserById(user.getId());
+        return "forward:/project";
+    }
 }
